@@ -43,7 +43,7 @@ public:
 
 	SDL_Texture* GetAtlas() const;
 
-	j1UI_Elem* AddElement(UIType type, Alignment aligment);
+	j1UI_Elem* AddElement(UIType type, Alignment aligment = NONE);
 	void DestroyElement(j1UI_Elem* elem);
 
 private:

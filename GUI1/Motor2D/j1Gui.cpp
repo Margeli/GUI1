@@ -8,6 +8,7 @@
 #include "j1Gui.h"
 #include "j1UI_Elem.h"
 #include "GuiImage.h"
+#include "GuiText.h"
 
 j1Gui::j1Gui() : j1Module()
 {
@@ -75,7 +76,7 @@ bool j1Gui::CleanUp()
 		elem->data->CleanUp();
 		DestroyElement(elem->data);
 	}
-
+	elements.clear();
 	return true;
 }
 
@@ -94,7 +95,7 @@ void j1Gui::DestroyElement(j1UI_Elem* elem) {
 	elements.del(elements.At(num));
 }
 
-j1UI_Elem* j1Gui::AddElement(UIType type, Alignment alignment) {
+j1UI_Elem* j1Gui::AddElement(UIType type, Alignment alignment ) {
 
 	j1UI_Elem* ret = nullptr;
 
@@ -109,7 +110,8 @@ j1UI_Elem* j1Gui::AddElement(UIType type, Alignment alignment) {
 		break;
 	case INPUTBOX:
 		break;
-	case LABEL:
+	case TEXT:
+		ret = new GuiText();
 		break;	
 	}
 	if (ret != nullptr) {

@@ -77,6 +77,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GuiImage.cpp" />
+    <ClCompile Include="GuiText.cpp" />
     <ClCompile Include="j1UI_Elem.cpp" />
     <ClCompile Include="j1Fonts.cpp" />
     <ClCompile Include="j1Gui.cpp" />
@@ -97,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GuiImage.h" />
+    <ClInclude Include="GuiText.h" />
     <ClInclude Include="j1UI_Elem.h" />
     <ClInclude Include="j1Fonts.h" />
     <ClInclude Include="j1Gui.h" />

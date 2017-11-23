@@ -13,7 +13,7 @@ enum UIType {
 	IMAGE,
 	BUTTON,
 	INPUTBOX,
-	LABEL
+	TEXT
 };
 enum ButtonState {
 	PRESSED = 1,

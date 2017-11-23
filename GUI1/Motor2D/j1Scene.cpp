@@ -11,7 +11,7 @@
 #include "j1Gui.h"
 #include "j1Scene.h"
 #include"GuiImage.h"
-#include "j1Gui.h"
+#include "GuiText.h"
 
 j1Scene::j1Scene() : j1Module()
 {
@@ -47,9 +47,9 @@ bool j1Scene::Start()
 	debug_tex = App->tex->Load("maps/path2.png");
 
 	// TODO 3: Create the banner (rect {485, 829, 328, 103}) and the text "Hello World"
-	banner =(GuiImage*) App->gui->AddElement(IMAGE, CENTERED);
-	
+	banner =(GuiImage*) App->gui->AddElement(IMAGE, CENTERED);	
 	banner->rect = { 485, 829, 328, 103 };
+	text = (GuiText*)App->gui->AddElement(TEXT, CENTERED);
 	
 	return true;
 }
