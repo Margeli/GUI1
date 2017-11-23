@@ -13,6 +13,7 @@ public:
 
 	// Destructor
 	virtual ~GuiImage();
+	bool Start();
 
 	
 

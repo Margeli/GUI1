@@ -48,6 +48,7 @@ bool j1Scene::Start()
 
 	// TODO 3: Create the banner (rect {485, 829, 328, 103}) and the text "Hello World"
 	banner =(GuiImage*) App->gui->AddElement(IMAGE);
+	
 	banner->rect = { 485, 829, 328, 103 };
 	return true;
 }
@@ -85,9 +86,7 @@ bool j1Scene::PreUpdate()
 // Called each loop iteration
 bool j1Scene::Update(float dt)
 {
-	// Gui ---
 	
-	// -------
 	if(App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
 		App->LoadGame("save_game.xml");
 
@@ -135,6 +134,10 @@ bool j1Scene::Update(float dt)
 		iPoint pos = App->map->MapToWorld(path->At(i)->x, path->At(i)->y);
 		App->render->Blit(debug_tex, pos.x, pos.y);
 	}
+
+	// Gui ---
+	App->render->Blit(banner->tex, -App->render->camera.x + App->render->camera.w / 3, -App->render->camera.y + 50, &banner->rect);
+	// -------
 
 	return true;
 }

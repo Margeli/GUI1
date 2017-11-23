@@ -3,9 +3,10 @@
 
 #include "j1Module.h"
 #include "SDL\include\SDL_rect.h"
+#include "p2Point.h"
 
 
-class SDL_Texture;
+struct SDL_Texture;
 
 enum UIType {
 	CHECK = 1,
@@ -19,12 +20,19 @@ enum ButtonState {
 	IDLE,
 	DISABLED
 };
+
+enum Alignment {
+
+	LEFT = 1,
+	CENTERED,
+	RIGHT
+};
 // ---------------------------------------------------
 class j1UI_Elem : j1Module
 {
 public:
 
-	j1UI_Elem(UIType type);
+	j1UI_Elem(UIType type, Alignment align);
 
 	// Destructor
 	virtual ~j1UI_Elem();
@@ -44,12 +52,14 @@ public:
 	// Called before quitting
 	virtual bool CleanUp();
 
-	
+	iPoint DoAlignment(Alignment alignment);
 
 
 	SDL_Texture* tex;
 	UIType type;
+	Alignment align;
 	SDL_Rect rect;
+	iPoint position;
 
 private:
 	bool Blit() const { return true; }

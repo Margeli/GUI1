@@ -66,6 +66,7 @@ bool j1Gui::PostUpdate()
 // Called before quitting
 bool j1Gui::CleanUp()
 {
+	App->tex->UnLoad(atlas);
 	LOG("Freeing GUI");
 	p2List_item<j1UI_Elem*>* elem;
 
@@ -79,7 +80,7 @@ bool j1Gui::CleanUp()
 }
 
 // const getter for atlas
-const SDL_Texture* j1Gui::GetAtlas() const
+SDL_Texture* j1Gui::GetAtlas() const
 {
 	return atlas;
 }
@@ -112,7 +113,8 @@ j1UI_Elem* j1Gui::AddElement(UIType type) {
 		break;	
 	}
 	if (ret != nullptr) {
-		elements.add(ret);
+		elements.add(ret);		
+		ret->Start();
 	}
 	return ret;
 }
