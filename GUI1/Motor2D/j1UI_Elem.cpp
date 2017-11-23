@@ -26,15 +26,24 @@ j1UI_Elem::~j1UI_Elem()
 {
 }
 
-iPoint j1UI_Elem::DoAlignment(Alignment alignment) {
+void j1UI_Elem::UpdateAlignment() {
 
-	switch (alignment) {
+	switch (align) {
+	case NONE:
+		break;
 	case CENTERED:
-		
-
+		position.x = (-App->render->camera.x + App->render->camera.w / 2) -(rect.w / 2);
+		position.y = -App->render->camera.y;
+		break;
 	case RIGHT:
-
+		position.x = (-App->render->camera.x + App->render->camera.w) - rect.w;
+		position.y = -App->render->camera.y;
+		break;
 	case LEFT:
+		position.x = -App->render->camera.x;
+		position.y = -App->render->camera.y;
+		break;
 	}
+	
 
 }

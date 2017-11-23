@@ -6,7 +6,7 @@
 
 
 
-GuiImage::GuiImage(): j1UI_Elem(UIType::IMAGE)
+GuiImage::GuiImage(): j1UI_Elem(UIType::IMAGE, Alignment::NONE)
 {
 
 

@@ -22,7 +22,7 @@ enum ButtonState {
 };
 
 enum Alignment {
-
+	NONE,
 	LEFT = 1,
 	CENTERED,
 	RIGHT
@@ -52,7 +52,8 @@ public:
 	// Called before quitting
 	virtual bool CleanUp();
 
-	iPoint DoAlignment(Alignment alignment);
+	//sets the pos depending on the alignment
+	void UpdateAlignment();
 
 
 	SDL_Texture* tex;

@@ -94,7 +94,7 @@ void j1Gui::DestroyElement(j1UI_Elem* elem) {
 	elements.del(elements.At(num));
 }
 
-j1UI_Elem* j1Gui::AddElement(UIType type) {
+j1UI_Elem* j1Gui::AddElement(UIType type, Alignment alignment) {
 
 	j1UI_Elem* ret = nullptr;
 
@@ -113,7 +113,8 @@ j1UI_Elem* j1Gui::AddElement(UIType type) {
 		break;	
 	}
 	if (ret != nullptr) {
-		elements.add(ret);		
+		elements.add(ret);	
+		ret->align = alignment;
 		ret->Start();
 	}
 	return ret;

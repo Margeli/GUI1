@@ -47,9 +47,10 @@ bool j1Scene::Start()
 	debug_tex = App->tex->Load("maps/path2.png");
 
 	// TODO 3: Create the banner (rect {485, 829, 328, 103}) and the text "Hello World"
-	banner =(GuiImage*) App->gui->AddElement(IMAGE);
+	banner =(GuiImage*) App->gui->AddElement(IMAGE, CENTERED);
 	
 	banner->rect = { 485, 829, 328, 103 };
+	
 	return true;
 }
 
@@ -136,7 +137,8 @@ bool j1Scene::Update(float dt)
 	}
 
 	// Gui ---
-	App->render->Blit(banner->tex, -App->render->camera.x + App->render->camera.w / 3, -App->render->camera.y + 50, &banner->rect);
+	banner->UpdateAlignment();
+	App->render->Blit(banner->tex, banner->position.x , banner->position.y+ 50, &banner->rect);
 	// -------
 
 	return true;
