@@ -10,6 +10,7 @@
 #include "j1PathFinding.h"
 #include "j1Gui.h"
 #include "j1Scene.h"
+#include "j1Fonts.h"
 #include"GuiImage.h"
 #include "GuiText.h"
 
@@ -47,9 +48,13 @@ bool j1Scene::Start()
 	debug_tex = App->tex->Load("maps/path2.png");
 
 	// TODO 3: Create the banner (rect {485, 829, 328, 103}) and the text "Hello World"
-	banner =(GuiImage*) App->gui->AddElement(IMAGE, CENTERED);	
+	
+	
+	banner = (GuiImage*)App->gui->AddElement(IMAGE, CENTERED);
 	banner->rect = { 485, 829, 328, 103 };
+	
 	text = (GuiText*)App->gui->AddElement(TEXT, CENTERED);
+	text->CreateText("Hello World");
 	
 	return true;
 }
@@ -139,6 +144,8 @@ bool j1Scene::Update(float dt)
 	// Gui ---
 	banner->UpdateAlignment();
 	App->render->Blit(banner->tex, banner->position.x , banner->position.y+ 50, &banner->rect);
+	text->UpdateAlignment();
+	App->render->Blit(text->tex, text->position.x, text->position.y + 20);
 	// -------
 
 	return true;

@@ -16,9 +16,13 @@ public:
 	virtual ~GuiText();
 	bool Start();
 	bool CleanUp();
+	
+
+	void CreateText(p2SString txt);
+	
 
 private:
-	_TTF_Font* font;
+	p2SString text;
 
 };
 
