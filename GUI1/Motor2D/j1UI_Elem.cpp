@@ -2,6 +2,7 @@
 #include "j1Gui.h"
 #include "j1App.h"
 #include "j1Render.h"
+#include "j1Textures.h"
 
 
 j1UI_Elem::j1UI_Elem(UIType type, Alignment align) : type(type), align(align)
@@ -24,6 +25,12 @@ bool j1UI_Elem::CleanUp() {
 
 j1UI_Elem::~j1UI_Elem()
 {
+}
+
+SDL_Texture* j1UI_Elem::LoadTexture(p2SString path) {
+
+	SDL_Texture* ret = App->tex->Load(path.GetString());
+	return ret;
 }
 
 void j1UI_Elem::UpdateAlignment() {

@@ -9,11 +9,12 @@ class GuiImage : public j1UI_Elem
 {
 public:
 
-	GuiImage();
+	GuiImage(Alignment alignment = NONE);
 
 	// Destructor
 	virtual ~GuiImage();
 	bool Start();
+	bool Update(float dt);
 	bool CleanUp();
 
 	

@@ -10,12 +10,13 @@ class GuiText : public j1UI_Elem
 {
 public:
 
-	GuiText();
+	GuiText(Alignment alignment = NONE);
 
 	// Destructor
 	virtual ~GuiText();
 	bool Start();
 	bool CleanUp();
+	bool Update(float dt);
 	
 
 	void CreateText(p2SString txt);

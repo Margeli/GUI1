@@ -36,6 +36,7 @@ public:
 
 private:
 	SDL_Texture* debug_tex;
+	GuiImage* background;
 	GuiImage* banner;
 	GuiText* text;
 	

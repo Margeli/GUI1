@@ -4,6 +4,11 @@
 #include "j1Module.h"
 #include "p2List.h"
 #include "j1UI_Elem.h"
+#include "GuiImage.h"
+#include "GuiText.h"
+#include "GuiInput.h"
+#include "GuiCheck.h"
+#include "GuiButton.h"
 
 #define CURSOR_WIDTH 2
 
@@ -43,10 +48,16 @@ public:
 
 	SDL_Texture* GetAtlas() const;
 
-	j1UI_Elem* AddElement(UIType type, Alignment aligment = NONE);
+
+	GuiImage* AddImage(Alignment align, char* path , SDL_Rect texture = { 0,0,0,0 }, iPoint displacement = { 0,0 });
+	GuiButton* AddButton(Alignment align, p2SString path, SDL_Rect texture = { 0,0,0,0 }, iPoint displacement = { 0,0 });
+	GuiCheck* AddCheck(Alignment align, p2SString path, SDL_Rect texture = { 0,0,0,0 }, iPoint displacement = { 0,0 });
+	GuiText* AddText(Alignment align, p2SString text, iPoint displacement = { 0,0 });
+
 	void DestroyElement(j1UI_Elem* elem);
 
 private:
+	j1UI_Elem* AddElement(UIType type, Alignment aligment = NONE);
 
 	p2List<j1UI_Elem*> elements;
 	SDL_Texture* atlas;

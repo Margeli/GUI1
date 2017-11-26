@@ -76,7 +76,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GuiButton.cpp" />
+    <ClCompile Include="GuiCheck.cpp" />
     <ClCompile Include="GuiImage.cpp" />
+    <ClCompile Include="GuiInput.cpp" />
     <ClCompile Include="GuiText.cpp" />
     <ClCompile Include="j1UI_Elem.cpp" />
     <ClCompile Include="j1Fonts.cpp" />
@@ -97,7 +100,10 @@
     <ClCompile Include="PugiXml\src\pugixml.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GuiButton.h" />
+    <ClInclude Include="GuiCheck.h" />
     <ClInclude Include="GuiImage.h" />
+    <ClInclude Include="GuiInput.h" />
     <ClInclude Include="GuiText.h" />
     <ClInclude Include="j1UI_Elem.h" />
     <ClInclude Include="j1Fonts.h" />

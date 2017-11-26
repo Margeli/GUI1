@@ -49,13 +49,14 @@ bool j1Scene::Start()
 
 	// TODO 3: Create the banner (rect {485, 829, 328, 103}) and the text "Hello World"
 	
+	// -----Gui------
 	
-	banner = (GuiImage*)App->gui->AddElement(IMAGE, CENTERED);
-	banner->rect = { 485, 829, 328, 103 };
+	background = App->gui->AddImage(LEFT, "gui/wow ui/login_background.png", { 0, 0, 1920, 1080 });
+	banner = App->gui->AddImage(CENTERED, nullptr, { 485, 829, 328, 103 });
+
 	
-	text = (GuiText*)App->gui->AddElement(TEXT, CENTERED);
-	text->CreateText("Hello World");
-	
+	p2SString text1 = "Hello World";
+	text = App->gui->AddText(CENTERED, text1, {0,400});
 	return true;
 }
 
@@ -142,10 +143,8 @@ bool j1Scene::Update(float dt)
 	}
 
 	// Gui ---
-	banner->UpdateAlignment();
-	App->render->Blit(banner->tex, banner->position.x , banner->position.y+ 50, &banner->rect);
-	text->UpdateAlignment();
-	App->render->Blit(text->tex, text->position.x, text->position.y + 20);
+	
+	
 	// -------
 
 	return true;

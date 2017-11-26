@@ -46,14 +46,27 @@
     <ClCompile Include="j1Fonts.cpp">
       <Filter>Desenvolupament  ========\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="j1Gui.cpp">
-      <Filter>Desenvolupament  ========\Modules</Filter>
-    </ClCompile>
     <ClCompile Include="j1UI_Elem.cpp">
-      <Filter>Desenvolupament  ========\Modules</Filter>
+      <Filter>GUI</Filter>
     </ClCompile>
-    <ClCompile Include="GuiImage.cpp" />
-    <ClCompile Include="GuiText.cpp" />
+    <ClCompile Include="j1Gui.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GuiImage.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GuiText.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GuiButton.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GuiCheck.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GuiInput.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="j1Window.h">
@@ -119,14 +132,27 @@
     <ClInclude Include="j1Fonts.h">
       <Filter>Desenvolupament  ========\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="j1Gui.h">
-      <Filter>Desenvolupament  ========\Modules</Filter>
-    </ClInclude>
     <ClInclude Include="j1UI_Elem.h">
-      <Filter>Desenvolupament  ========\Modules</Filter>
+      <Filter>GUI</Filter>
     </ClInclude>
-    <ClInclude Include="GuiImage.h" />
-    <ClInclude Include="GuiText.h" />
+    <ClInclude Include="j1Gui.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GuiImage.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GuiText.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GuiButton.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GuiCheck.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GuiInput.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Programacio 2 ===========">
@@ -146,6 +172,9 @@
     </Filter>
     <Filter Include="Desenvolupament  ========\Tools\PuguiXML">
       <UniqueIdentifier>{7cb78d67-17cc-45eb-af97-e2106becce7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{cc05eca8-f503-4860-94de-10a9d2513353}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

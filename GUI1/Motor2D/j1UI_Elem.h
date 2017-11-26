@@ -55,12 +55,14 @@ public:
 	//sets the pos depending on the alignment
 	void UpdateAlignment();
 
+	SDL_Texture* LoadTexture(p2SString path);
 
 	SDL_Texture* tex;
 	UIType type;
 	Alignment align;
 	SDL_Rect rect;
 	iPoint position;
+	iPoint displacement;
 
 private:
 	bool Blit() const { return true; }
