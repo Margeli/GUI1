@@ -8,6 +8,14 @@
 
 struct SDL_Texture;
 
+enum FontType {
+	DEFAULT = 0,
+	ARIALN,
+	FRIZQT,
+	MORPHEUS,
+	SKURRI
+};
+
 enum UIType {
 	CHECK = 1,
 	IMAGE,
@@ -63,6 +71,7 @@ public:
 	SDL_Rect rect;
 	iPoint position;
 	iPoint displacement;
+
 
 private:
 	bool Blit() const { return true; }

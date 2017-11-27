@@ -37,8 +37,16 @@ public:
 private:
 	SDL_Texture* debug_tex;
 	GuiImage* background;
+	GuiImage* WC_logo;
+	GuiImage* rating;
+
 	GuiImage* banner;
-	GuiText* text;
+	
+	GuiText* release;
+	GuiText* copyright;
+	GuiText* date;
+	GuiText* web;
+
 	
 };
 

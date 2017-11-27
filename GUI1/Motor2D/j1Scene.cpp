@@ -52,11 +52,17 @@ bool j1Scene::Start()
 	// -----Gui------
 	
 	background = App->gui->AddImage(LEFT, "gui/wow ui/login_background.png", { 0, 0, 1920, 1080 });
-	banner = App->gui->AddImage(CENTERED, nullptr, { 485, 829, 328, 103 });
-
-	
-	p2SString text1 = "Hello World";
-	text = App->gui->AddText(CENTERED, text1, {0,400});
+	//banner = App->gui->AddImage(CENTERED, nullptr, { 485, 829, 328, 103 });
+	WC_logo = App->gui->AddImage(LEFT, "gui/wow ui/COMMON/Glues-WoW-Logo.png", { 0, 0, 256, 128 }, {75, 10});
+	rating = App->gui->AddImage(LEFT, "gui/wow ui/LOGIN/Glues-ESRBRating.png", { 0, 0, 128, 128 }, { 75, 900 });
+	p2SString text1 = "Version 2.0.12 (6546) (Release)";
+	release = App->gui->AddText(LEFT, text1, { 50,1030 }, FRIZQT, {255, 255,0,255});
+	text1 = "Mar 30 2007";
+	date = App->gui->AddText(LEFT, text1, { 50,1042 }, FRIZQT, { 255, 255,0,255 });
+	text1 = "Copyright 2004-2007 blizzard Entertainment. All Rights Reserved";
+	copyright = App->gui->AddText(CENTERED, text1, { -100,1040 }, FRIZQT, { 255, 255,0,255 });
+	text1 = "WoWps.org TBC";
+	web = App->gui->AddText(RIGHT, text1, { -120,900 }, MORPHEUS, { 255, 255,0,255 });
 	return true;
 }
 

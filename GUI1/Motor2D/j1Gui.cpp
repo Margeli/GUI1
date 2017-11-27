@@ -156,9 +156,9 @@ GuiCheck* j1Gui::AddCheck(Alignment align, p2SString path, SDL_Rect texture, iPo
 
 }
 
-GuiText* j1Gui::AddText(Alignment align, p2SString text, iPoint displacement) {
+GuiText* j1Gui::AddText(Alignment align, p2SString text, iPoint displacement,FontType font, SDL_Color color) {
 	GuiText* tex = (GuiText*)App->gui->AddElement(TEXT, align);
-	tex->CreateText(text);
+	tex->CreateText(text, color, font);
 	tex->displacement = displacement;
 	return tex;
 

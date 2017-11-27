@@ -19,12 +19,16 @@ public:
 	bool Update(float dt);
 	
 
-	void CreateText(p2SString txt);
+	void CreateText(p2SString txt, SDL_Color color, FontType font);
 	
 
 private:
 	p2SString text;
 
+	_TTF_Font* frizqt = nullptr;
+	_TTF_Font* morpheus = nullptr;
+	_TTF_Font* arialn = nullptr;
+	_TTF_Font* skurri = nullptr;
 };
 
 #endif // __GUITEXT_H__
