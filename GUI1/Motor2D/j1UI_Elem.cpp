@@ -2,6 +2,7 @@
 #include "j1Gui.h"
 #include "j1App.h"
 #include "j1Render.h"
+#include "j1Fonts.h"
 #include "j1Textures.h"
 
 
@@ -52,5 +53,30 @@ void j1UI_Elem::UpdateAlignment() {
 		break;
 	}
 	
+
+}
+
+void j1UI_Elem::UpdateTextAlignment(p2SString text) {
+
+	int width, heigh;
+
+	App->font->CalcSize(text.GetString(), width, heigh);
+	switch (align) {
+	case NONE:
+		break;
+	case CENTERED:
+		position.x = (-App->render->camera.x + App->render->camera.w / 2) - (width/2 );
+		position.y = -App->render->camera.y;
+		break;
+	case RIGHT:
+		position.x = (-App->render->camera.x + App->render->camera.w) - width;
+		position.y = -App->render->camera.y;
+		break;
+	case LEFT:
+		position.x = -App->render->camera.x;
+		position.y = -App->render->camera.y;
+		break;
+	}
+
 
 }

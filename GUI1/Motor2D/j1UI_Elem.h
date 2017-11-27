@@ -62,6 +62,7 @@ public:
 
 	//sets the pos depending on the alignment
 	void UpdateAlignment();
+	void UpdateTextAlignment( p2SString text );
 
 	SDL_Texture* LoadTexture(p2SString path);
 

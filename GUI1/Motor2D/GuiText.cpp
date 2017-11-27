@@ -8,24 +8,25 @@
 
 
 GuiText::GuiText(Alignment alignment) : j1UI_Elem(UIType::TEXT, Alignment::NONE) {
+	
 	align = alignment;
+	int font_size = 14;
 	const char* path;
-	int size = 14;
-	if (frizqt == nullptr) {
+	if (font_frizqt == nullptr) {
 		path = "fonts/wow/FRIZQT__.ttf";
-		frizqt = App->font->Load(path, size);
+		font_frizqt = App->font->Load(path, font_size);
 	}
-	if (morpheus == nullptr) {
+	if (font_morpheus == nullptr) {
 		path = "fonts/wow/MORPHEUS.ttf";
-		morpheus = App->font->Load(path, size);
+		font_morpheus = App->font->Load(path, font_size);
 	}
-	if (skurri == nullptr) {
+	if (font_skurri == nullptr) {
 		path = "fonts/wow/skurri.ttf";
-		morpheus = App->font->Load(path, size);
+		font_morpheus = App->font->Load(path, font_size);
 	}
-	if (arialn == nullptr) {
+	if (font_arialn == nullptr) {
 		path = "fonts/wow/ARIALN.ttf";
-		morpheus = App->font->Load(path, size);
+		font_morpheus = App->font->Load(path, font_size);
 	}
 }
 
@@ -36,6 +37,7 @@ GuiText::~GuiText()
 
 bool GuiText::Start() {
 
+	
 	
 
 	return true;
@@ -51,29 +53,21 @@ void GuiText::CreateText(p2SString txt, SDL_Color color, FontType font) {
 	_TTF_Font* fnt = nullptr;
 	switch (font) {
 	case FRIZQT:
-		fnt = frizqt;
-		break;
-
+		fnt = font_frizqt;	break;
 	case MORPHEUS:
-		fnt = morpheus;
-		break;
-
+		fnt = font_morpheus;	break;
 	case SKURRI:
-		fnt = morpheus;
-		break;
-
+		fnt = font_skurri;	break;
 	case ARIALN:
-		fnt = morpheus;
-		break;
+		fnt = font_arialn;	break;
 	}
-	
+	text = txt;
 	tex = App->font->Print(txt.GetString(), color, fnt);
-	rect = { 0,0, (int)txt.Length(),100 }; // prepared to fit in the alignUpdate method
-
 }
+
 bool GuiText::Update(float dt) {
 
-	UpdateAlignment();
+	UpdateTextAlignment(text.GetString());
 	App->render->Blit(tex, position.x+ displacement.x, position.y+ displacement.y);
 	return true;
 }

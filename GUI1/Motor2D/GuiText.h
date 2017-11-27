@@ -25,10 +25,11 @@ public:
 private:
 	p2SString text;
 
-	_TTF_Font* frizqt = nullptr;
-	_TTF_Font* morpheus = nullptr;
-	_TTF_Font* arialn = nullptr;
-	_TTF_Font* skurri = nullptr;
+
+	_TTF_Font* font_frizqt = nullptr;
+	_TTF_Font* font_morpheus = nullptr;
+	_TTF_Font* font_arialn = nullptr;
+	_TTF_Font* font_skurri = nullptr;
 };
 
 #endif // __GUITEXT_H__

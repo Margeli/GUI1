@@ -6,6 +6,9 @@
 struct SDL_Texture;
 class GuiImage;
 class GuiText;
+class GuiButton;
+class GuiCheck;
+
 
 class j1Scene : public j1Module
 {
@@ -39,8 +42,16 @@ private:
 	GuiImage* background;
 	GuiImage* WC_logo;
 	GuiImage* rating;
+	GuiImage* blizzard;
 
-	GuiImage* banner;
+	GuiButton* login;
+	GuiButton* cinematics;
+	GuiButton* credits;
+	GuiButton* ToU;
+	GuiButton* quit;
+	GuiButton* manageaccount;
+	GuiButton* commsite;
+	GuiCheck* check;
 	
 	GuiText* release;
 	GuiText* copyright;

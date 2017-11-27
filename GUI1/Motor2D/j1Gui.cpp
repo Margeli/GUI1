@@ -138,20 +138,18 @@ GuiImage* j1Gui::AddImage(Alignment align, char* path, SDL_Rect texture, iPoint 
 	return image;
 }
 
-GuiButton* j1Gui::AddButton(Alignment align, p2SString path, SDL_Rect texture, iPoint displacement) {
-	GuiButton* button = (GuiButton*)App->gui->AddElement(BUTTON, align);;
-	button->rect = texture;
+GuiButton* j1Gui::AddButton(Alignment align, p2SString text, iPoint displacement) {
+	GuiButton* button = (GuiButton*)App->gui->AddElement(BUTTON, align);	
 	button->displacement = displacement;
-	button->tex = button->LoadTexture(path.GetString());
+	button->text = text;	
 	return button;
 
 }
 
-GuiCheck* j1Gui::AddCheck(Alignment align, p2SString path, SDL_Rect texture, iPoint displacement) {
-	GuiCheck* check = (GuiCheck*)App->gui->AddElement(CHECK, align);
-	check->rect = texture;
+GuiCheck* j1Gui::AddCheck(Alignment align, p2SString text, iPoint displacement) {
+	GuiCheck* check = (GuiCheck*)App->gui->AddElement(CHECK, align);	
 	check->displacement = displacement;
-	check->tex = check->LoadTexture(path.GetString());
+	check->text = text;
 	return check;
 
 }

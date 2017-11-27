@@ -17,11 +17,14 @@ public:
 	bool CleanUp();
 	bool Update(float dt);
 
-
+	p2SString text;
+	bool pressed = false;
 
 
 private:
-
+	void AddCheckText() const ;
+	bool CheckPressedCheck() const;
+	SDL_Texture* check;
 };
 
 #endif // __GUICHECK_H__

@@ -17,11 +17,16 @@ public:
 	bool CleanUp();
 	bool Update(float dt);
 
+	p2SString text;
 
 
 
 private:
 
+	void AddButtonText();
+	bool CheckMouseAboveButton() const ;
+	SDL_Texture* up;
+	SDL_Texture* down;
 };
 
 #endif // __GUIBUTTON_H__
