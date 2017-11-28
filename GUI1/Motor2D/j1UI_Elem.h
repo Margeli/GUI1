@@ -28,6 +28,15 @@ enum ButtonState {
 	IDLE,
 	DISABLED
 };
+enum ButtonEvent {
+
+	MOUSE_NONE = 0,
+	MOUSE_ENTER,
+	MOUSE_LEAVE,
+	CLICK_UP,
+	CLICK_DOWN
+
+};
 
 enum Alignment {
 	NONE,
@@ -69,6 +78,9 @@ public:
 
 	SDL_Texture* tex;
 	UIType type;
+	ButtonEvent event = ButtonEvent::MOUSE_NONE;
+	ButtonEvent previous_event = ButtonEvent::MOUSE_NONE;
+	ButtonState state = ButtonState::IDLE;
 	Alignment align;
 	SDL_Rect rect;
 	iPoint position;

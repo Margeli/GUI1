@@ -23,7 +23,8 @@ public:
 
 private:
 	void AddCheckText() const ;
-	bool CheckPressedCheck() const;
+	void ManageEvents();
+	ButtonEvent CheckPressedCheck() const;
 	SDL_Texture* check;
 };
 

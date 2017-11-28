@@ -71,9 +71,9 @@ bool GuiText::Update(float dt) {
 	App->render->Blit(tex, position.x+ displacement.x, position.y+ displacement.y);
 	return true;
 }
-void GuiText::DebugDraw(){
+void GuiText::DebugDraw() {
 
 	int width, height;
-App->font->CalcSize(text.GetString(), width, height);
-App->render->DrawQuad({ position.x + displacement.x, position.y + displacement.y, width, height }, 255, 255, 0, 100);
+	App->font->CalcSize(text.GetString(), width, height);
+	App->render->DrawQuad({ position.x + displacement.x, position.y + displacement.y, width, height }, 255, 255, 0, 100);
 }

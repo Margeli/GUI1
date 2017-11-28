@@ -24,6 +24,8 @@ bool GuiButton::Start() {
 	rect = { 0,0,128,32 };
 	AddButtonText();
 	tex = up;
+	
+
 	return true;
 }
 
@@ -36,12 +38,16 @@ bool GuiButton::CleanUp() {
 bool GuiButton::Update(float dt) {
 
 	if (CheckMouseAboveButton()) {
-		tex = down;
+		event = MOUSE_ENTER;
 	}
-	else{
-		tex = up;
+	else
+	{
+		event = MOUSE_LEAVE;
 	}
-		
+	ManageEvents();
+
+
+
 
 	UpdateAlignment();
 	App->render->Blit(tex, position.x + displacement.x, position.y + displacement.y, &rect);
@@ -84,4 +90,18 @@ bool GuiButton::CheckMouseAboveButton() const {
 	}
 
 	return ret;
+}
+void GuiButton::ManageEvents() {
+	if (event != previous_event) {
+		switch (event) {
+		case MOUSE_ENTER:
+			tex = down;
+			previous_event = event;
+			break;
+		case MOUSE_LEAVE:
+			tex = up;
+			previous_event = event;
+			break;
+		}
+	}
 }

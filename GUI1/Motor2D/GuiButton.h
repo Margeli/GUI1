@@ -23,6 +23,7 @@ public:
 
 private:
 
+	void ManageEvents();
 	void AddButtonText();
 	bool CheckMouseAboveButton() const ;
 	SDL_Texture* up;

@@ -71,6 +71,7 @@ public:
 	{
 		return true;
 	}
+	virtual void ReceiveGuiElements() const {}
 
 public:
 
