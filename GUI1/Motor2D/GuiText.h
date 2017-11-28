@@ -20,7 +20,7 @@ public:
 	
 
 	void CreateText(p2SString txt, SDL_Color color, FontType font);
-	
+	void DebugDraw();
 
 private:
 	p2SString text;

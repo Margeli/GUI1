@@ -34,8 +34,11 @@ public:
 	// Call before first frame
 	bool Start();
 
-	// Called before all Updates
+	// Called all Updates
 	bool Update(float dt);
+
+	//Called before all Updates
+	bool PreUpdate();
 
 	// Called after all Updates
 	bool PostUpdate();
@@ -62,6 +65,8 @@ private:
 	p2List<j1UI_Elem*> elements;
 	SDL_Texture* atlas;
 	p2SString atlas_file_name;
+
+	bool debug= false;
 };
 
 #endif // __j1GUI_H__

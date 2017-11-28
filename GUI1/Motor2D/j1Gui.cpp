@@ -45,6 +45,14 @@ bool j1Gui::Start()
 	return true;
 }
 
+bool j1Gui::PreUpdate() {
+
+	if (App->input->GetKey(SDL_SCANCODE_F8) == KEY_DOWN) {
+		debug = !debug;
+	}
+	return true;
+}
+
 // Update all guis
 bool j1Gui::Update(float dt)
 {
@@ -53,7 +61,12 @@ bool j1Gui::Update(float dt)
 	for (elem = elements.start; elem != NULL; elem = elem->next)
 	{
 		elem->data->Update(dt);
+		if (debug)
+		{
+			elem->data->DebugDraw();
+		}
 	}
+	
 
 	return true;
 }

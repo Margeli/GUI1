@@ -4,6 +4,7 @@
 #include "j1Render.h"
 #include "j1Fonts.h"
 #include "j1Textures.h"
+#include "j1Input.h"
 
 
 j1UI_Elem::j1UI_Elem(UIType type, Alignment align) : type(type), align(align)
@@ -77,6 +78,14 @@ void j1UI_Elem::UpdateTextAlignment(p2SString text) {
 		position.y = -App->render->camera.y;
 		break;
 	}
+}
+bool j1UI_Elem::Update(float dt) {
 
-
+	
+	
+	return true;
+}
+void j1UI_Elem::DebugDraw() {
+	
+	App->render->DrawQuad({position.x+ displacement.x, position.y+displacement.y, rect.w, rect.h }, 255, 255, 0, 100);
 }

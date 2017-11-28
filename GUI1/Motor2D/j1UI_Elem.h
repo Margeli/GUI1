@@ -51,8 +51,8 @@ public:
 	// Call before first frame
 	virtual bool Start();
 
-	// Called before all Updates
-	virtual bool Update(float dt) { return true; };
+	// Called all Updates
+	virtual bool Update(float dt);
 
 	// Called after all Updates
 	virtual bool PostUpdate() { return true; };
@@ -63,6 +63,7 @@ public:
 	//sets the pos depending on the alignment
 	void UpdateAlignment();
 	void UpdateTextAlignment( p2SString text );
+	virtual void DebugDraw(); 
 
 	SDL_Texture* LoadTexture(p2SString path);
 
@@ -76,6 +77,7 @@ public:
 
 private:
 	bool Blit() const { return true; }
+	bool debug = false;
 };
 
 #endif // __j1UIELEM_H__
