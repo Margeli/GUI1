@@ -49,7 +49,7 @@ class j1UI_Elem : j1Module
 {
 public:
 
-	j1UI_Elem(UIType type, Alignment align);
+	j1UI_Elem(UIType type, Alignment align, j1Module* listener = nullptr);
 
 	// Destructor
 	virtual ~j1UI_Elem();
@@ -85,6 +85,7 @@ public:
 	SDL_Rect rect;
 	iPoint position;
 	iPoint displacement;
+	j1Module* listener;
 
 
 private:

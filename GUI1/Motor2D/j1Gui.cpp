@@ -110,7 +110,7 @@ void j1Gui::DestroyElement(j1UI_Elem* elem) {
 	elements.del(elements.At(num));
 }
 
-j1UI_Elem* j1Gui::AddElement(UIType type, Alignment alignment ) {
+j1UI_Elem* j1Gui::AddElement(UIType type, Alignment alignment) {
 
 	j1UI_Elem* ret = nullptr;
 
@@ -129,7 +129,7 @@ j1UI_Elem* j1Gui::AddElement(UIType type, Alignment alignment ) {
 		elements.add(ret);
 		break;
 	case INPUTBOX:
-		ret = new GuiInput(alignment); 
+		ret = new GuiInput(alignment);
 		elements.add(ret);
 		break;
 	case TEXT:
@@ -140,10 +140,11 @@ j1UI_Elem* j1Gui::AddElement(UIType type, Alignment alignment ) {
 	return ret;
 }
 
-GuiImage* j1Gui::AddImage(Alignment align, char* path, SDL_Rect texture, iPoint displacement) {
-	GuiImage* image = (GuiImage*)App->gui->AddElement(IMAGE, align);;
+GuiImage* j1Gui::AddImage(Alignment align, char* path, SDL_Rect texture, iPoint displacement, j1Module* listener) {
+	GuiImage* image = (GuiImage*)App->gui->AddElement(IMAGE, align);
 	image->rect = texture;
 	image->displacement = displacement;
+	image->listener = listener;
 	if (path != nullptr) {	
 		p2SString pat = path;
 		image->tex = image->LoadTexture(pat.GetString());
@@ -151,26 +152,29 @@ GuiImage* j1Gui::AddImage(Alignment align, char* path, SDL_Rect texture, iPoint 
 	return image;
 }
 
-GuiButton* j1Gui::AddButton(Alignment align, p2SString text, iPoint displacement) {
-	GuiButton* button = (GuiButton*)App->gui->AddElement(BUTTON, align);	
+GuiButton* j1Gui::AddButton(Alignment align, p2SString text, iPoint displacement, j1Module* listener) {
+	GuiButton* button = (GuiButton*)App->gui->AddElement(BUTTON, align);
 	button->displacement = displacement;
 	button->text = text;	
+	button->listener = listener;
 	return button;
 
 }
 
-GuiCheck* j1Gui::AddCheck(Alignment align, p2SString text, iPoint displacement) {
-	GuiCheck* check = (GuiCheck*)App->gui->AddElement(CHECK, align);	
+GuiCheck* j1Gui::AddCheck(Alignment align, p2SString text, iPoint displacement, j1Module* listener) {
+	GuiCheck* check = (GuiCheck*)App->gui->AddElement(CHECK, align);
 	check->displacement = displacement;
 	check->text = text;
+	check->listener = listener;
 	return check;
 
 }
 
-GuiText* j1Gui::AddText(Alignment align, p2SString text, iPoint displacement,FontType font, SDL_Color color) {
+GuiText* j1Gui::AddText(Alignment align, p2SString text, iPoint displacement,FontType font, SDL_Color color, j1Module* listener) {
 	GuiText* tex = (GuiText*)App->gui->AddElement(TEXT, align);
 	tex->CreateText(text, color, font);
 	tex->displacement = displacement;
+	tex->listener = listener;
 	return tex;
 
 }

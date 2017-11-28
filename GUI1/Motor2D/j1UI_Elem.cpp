@@ -7,7 +7,7 @@
 #include "j1Input.h"
 
 
-j1UI_Elem::j1UI_Elem(UIType type, Alignment align) : type(type), align(align)
+j1UI_Elem::j1UI_Elem(UIType type, Alignment align, j1Module* listener) : type(type), align(align), listener(listener)
 {
 	
 }

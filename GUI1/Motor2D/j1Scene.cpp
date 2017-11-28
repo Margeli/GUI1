@@ -51,35 +51,37 @@ bool j1Scene::Start()
 	
 	// -----Gui------
 	
-	background = App->gui->AddImage(LEFT, "gui/wow ui/login_background.png", { 0, 0, 1920, 1080 });
-	//banner = App->gui->AddImage(CENTERED, nullptr, { 485, 829, 328, 103 });
-	WC_logo = App->gui->AddImage(LEFT, "gui/wow ui/COMMON/Glues-WoW-Logo.png", { 0, 0, 256, 128 }, {75, 10});
-	rating = App->gui->AddImage(LEFT, "gui/wow ui/LOGIN/Glues-ESRBRating.png", { 0, 0, 128, 128 }, { 75, 895 });
-	blizzard = App->gui->AddImage(CENTERED, "gui/wow ui/MainMenu/Glues-BlizzardLogo.png", { 0, 0, 128, 128 }, { 0, 900 });
+	background = App->gui->AddImage(LEFT, "gui/wow ui/login_background.png", { 0, 0, 1920, 1080 }, {0,0}, this);
+	WC_logo = App->gui->AddImage(LEFT, "gui/wow ui/COMMON/Glues-WoW-Logo.png", { 0, 0, 256, 128 }, {75, 10}, this);
+	rating = App->gui->AddImage(LEFT, "gui/wow ui/LOGIN/Glues-ESRBRating.png", { 0, 0, 128, 128 }, { 75, 895 }, this);
+	blizzard = App->gui->AddImage(CENTERED, "gui/wow ui/MainMenu/Glues-BlizzardLogo.png", { 0, 0, 128, 128 }, { 0, 900 }, this);
+	
 	p2SString txt = "Version 2.0.12 (6546) (Release)";
-	release = App->gui->AddText(LEFT, txt, { 50,1030 }, FRIZQT, {255, 255,0,255});
+	release = App->gui->AddText(LEFT, txt, { 50,1030 }, FRIZQT, {255, 255,0,255}, this);
 	txt = "Mar 30 2007";
-	date = App->gui->AddText(LEFT, txt, { 50,1042 }, FRIZQT, { 255, 255,0,255 });
+	date = App->gui->AddText(LEFT, txt, { 50,1042 }, FRIZQT, { 255, 255,0,255 }, this);
 	txt = "Copyright 2004-2007 blizzard Entertainment. All Rights Reserved";
-	copyright = App->gui->AddText(CENTERED, txt, { 0,1020 }, FRIZQT, { 255, 255,0,255 });
+	copyright = App->gui->AddText(CENTERED, txt, { 0,1020 }, FRIZQT, { 255, 255,0,255 }, this);
 	txt = "WoWps.org TBC";
-	web = App->gui->AddText(RIGHT, txt, { -80,850 }, MORPHEUS, { 255, 255,0,255 });
+	web = App->gui->AddText(RIGHT, txt, { -80,850 }, MORPHEUS, { 255, 255,0,255 }, this);
+	
 	txt = "Login";
-	login = App->gui->AddButton(CENTERED, txt, {0, 750});
+	login = App->gui->AddButton(CENTERED, txt, {0, 750}, this);
 	txt = "Cinematics";
-	cinematics = App->gui->AddButton(RIGHT, txt, { -50, 730 });
+	cinematics = App->gui->AddButton(RIGHT, txt, { -50, 730 }, this);
 	txt = "Credits";
-	credits = App->gui->AddButton(RIGHT, txt, { -50, 770 });
+	credits = App->gui->AddButton(RIGHT, txt, { -50, 770 }, this);
 	txt = "Terms of Use";
-	ToU = App->gui->AddButton(RIGHT, txt, { -50, 810 });
+	ToU = App->gui->AddButton(RIGHT, txt, { -50, 810 }, this);
 	txt = "Quit";
-	quit = App->gui->AddButton(RIGHT, txt, { -50, 950 });
+	quit = App->gui->AddButton(RIGHT, txt, { -50, 950 }, this);
 	txt = "Manage Account";
-	manageaccount = App->gui->AddButton(LEFT, txt, { 75, 850 });
+	manageaccount = App->gui->AddButton(LEFT, txt, { 75, 850 }, this);
 	txt = "Community Site";
-	commsite = App->gui->AddButton(LEFT, txt, { 75, 890 });
+	commsite = App->gui->AddButton(LEFT, txt, { 75, 890 }, this);
+	
 	txt = "Remember Account Name";
-	check = App->gui->AddCheck(LEFT, txt, { 75, 940 });
+	check = App->gui->AddCheck(LEFT, txt, { 75, 940 },this);
 	return true;
 }
 
