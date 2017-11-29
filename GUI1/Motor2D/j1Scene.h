@@ -37,9 +37,11 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+	void OnEventChange(j1UI_Elem* elem, ButtonEvent event) const;
+
 private:
 	SDL_Texture* debug_tex;
-	GuiImage* background;
+	SDL_Texture* background;
 	GuiImage* WC_logo;
 	GuiImage* rating;
 	GuiImage* blizzard;

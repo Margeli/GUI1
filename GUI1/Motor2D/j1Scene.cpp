@@ -51,7 +51,7 @@ bool j1Scene::Start()
 	
 	// -----Gui------
 	
-	background = App->gui->AddImage(LEFT, "gui/wow ui/login_background.png", { 0, 0, 1920, 1080 }, {0,0}, this);
+	background = App->tex->Load("gui/wow ui/login_background.png");		
 	WC_logo = App->gui->AddImage(LEFT, "gui/wow ui/COMMON/Glues-WoW-Logo.png", { 0, 0, 256, 128 }, {75, 10}, this);
 	rating = App->gui->AddImage(LEFT, "gui/wow ui/LOGIN/Glues-ESRBRating.png", { 0, 0, 128, 128 }, { 75, 895 }, this);
 	blizzard = App->gui->AddImage(CENTERED, "gui/wow ui/MainMenu/Glues-BlizzardLogo.png", { 0, 0, 128, 128 }, { 0, 900 }, this);
@@ -158,6 +158,8 @@ bool j1Scene::Update(float dt)
 	p = App->map->MapToWorld(p.x, p.y);
 
 	App->render->Blit(debug_tex, p.x, p.y);
+	SDL_Rect background_rect = { 0, 0, 1920, 1080 };
+	App->render->Blit(background, 0, 0, &background_rect);
 
 	const p2DynArray<iPoint>* path = App->pathfinding->GetLastPath();
 
@@ -192,4 +194,32 @@ bool j1Scene::CleanUp()
 	LOG("Freeing scene");
 
 	return true;
+}
+
+void j1Scene::OnEventChange(j1UI_Elem* elem, ButtonEvent event) const {
+	if (elem == web) {
+		if (event == ButtonEvent::RIGHT_CLICK) {
+			web->ChangeText("RIGHT CLICK");
+		}
+		if (event == ButtonEvent::MOUSE_INSIDE || event == ButtonEvent::MOUSE_OUTSIDE) {
+			web->ChangeText("WoWps.org TBC");
+		}
+		if (event == ButtonEvent::LEFT_CLICK) {
+			web->ChangeText("LEFT CLICK");
+		}
+	}
+	if (event == ButtonEvent::MOUSE_INSIDE) {
+		elem->StateChanging(HOVER);
+		LOG("Entering");
+	}
+	if (event == ButtonEvent::MOUSE_OUTSIDE) {
+		elem->StateChanging(IDLE);
+		LOG("Leaving");
+	}
+	if (event == ButtonEvent::RIGHT_CLICK) {
+		elem->StateChanging(PRESSED_R);
+	}
+	if (event == ButtonEvent::LEFT_CLICK) {
+		elem->StateChanging(PRESSED_L);		
+	}
 }

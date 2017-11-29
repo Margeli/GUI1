@@ -47,9 +47,13 @@ bool j1Gui::Start()
 
 bool j1Gui::PreUpdate() {
 
-	if (App->input->GetKey(SDL_SCANCODE_F8) == KEY_DOWN) {
-		debug = !debug;
-	}
+	if (App->input->GetKey(SDL_SCANCODE_F8) == KEY_DOWN) {	debug = !debug;}
+
+
+	UpdateElemEvent();
+	ManageElemEvent();
+	
+
 	return true;
 }
 
@@ -99,7 +103,62 @@ SDL_Texture* j1Gui::GetAtlas() const
 	return atlas;
 }
 
+void j1Gui::UpdateElemEvent() const {
 
+	iPoint pos;
+	App->input->GetMousePosition(pos.x, pos.y);
+
+	p2List_item<j1UI_Elem*>* elem;
+	for (elem = elements.start; elem != NULL; elem = elem->next)
+	{
+		iPoint elem_pos = { elem->data->position.x + elem->data->displacement.x,elem->data->position.y + elem->data->displacement.y };
+		if ((pos.x > elem_pos.x && pos.x < elem_pos.x + elem->data->rect.w) && (pos.y > elem_pos.y && pos.y < elem_pos.y + elem->data->rect.h)) {
+			if (App->input->GetMouseButtonDown(SDL_BUTTON_RIGHT) == KEY_REPEAT) {
+				elem->data->event = ButtonEvent::RIGHT_CLICK;
+				
+			}			
+			else if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_REPEAT) {
+				elem->data->event = ButtonEvent::LEFT_CLICK;
+				
+			}			
+			else {
+				elem->data->event = ButtonEvent::MOUSE_INSIDE;
+			}
+		}
+		else
+		{
+			elem->data->event = ButtonEvent::MOUSE_OUTSIDE;
+		}
+	}
+
+}
+
+void j1Gui::ManageElemEvent() {
+	p2List_item<j1UI_Elem*>* elem;
+	for (elem = elements.start; elem != NULL; elem = elem->next)
+	{
+		if ((elem->data->event != elem->data->previous_event) && elem->data->listener) {
+			switch (elem->data->event) {
+			case MOUSE_INSIDE:
+				elem->data->listener->OnEventChange(elem->data, MOUSE_INSIDE);
+				elem->data->previous_event = elem->data->event;
+				break;
+			case MOUSE_OUTSIDE:
+				elem->data->listener->OnEventChange(elem->data, MOUSE_OUTSIDE);
+				elem->data->previous_event = elem->data->event;
+				break;
+			case LEFT_CLICK:
+				elem->data->listener->OnEventChange(elem->data, LEFT_CLICK);
+				elem->data->previous_event = elem->data->event;
+				break;
+			case RIGHT_CLICK:
+				elem->data->listener->OnEventChange(elem->data, RIGHT_CLICK);
+				elem->data->previous_event = elem->data->event;
+				break;
+			}
+		}
+	}
+}
 
 // class Gui ---------------------------------------------------
 

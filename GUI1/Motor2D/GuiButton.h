@@ -19,15 +19,17 @@ public:
 
 	p2SString text;
 
-
+	
+	void StateChanging(ButtonState state);
 
 private:
 
-	void ManageEvents();
+	
 	void AddButtonText();
-	bool CheckMouseAboveButton() const ;
+	
 	SDL_Texture* up;
 	SDL_Texture* down;
+	SDL_Texture* press;
 };
 
 #endif // __GUIBUTTON_H__

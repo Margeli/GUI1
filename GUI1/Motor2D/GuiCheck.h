@@ -20,11 +20,11 @@ public:
 	p2SString text;
 	bool pressed = false;
 
+	void StateChanging(ButtonState state);
 
 private:
 	void AddCheckText() const ;
-	void ManageEvents();
-	ButtonEvent CheckPressedCheck() const;
+
 	SDL_Texture* check;
 };
 

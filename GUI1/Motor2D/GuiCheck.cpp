@@ -35,8 +35,6 @@ bool GuiCheck::CleanUp() {
 }
 bool GuiCheck::Update(float dt) {
 
-	event = CheckPressedCheck();
-	ManageEvents();
 
 	UpdateAlignment();
 	App->render->Blit(tex, position.x + displacement.x, position.y + displacement.y, &rect);
@@ -50,35 +48,18 @@ void GuiCheck::AddCheckText() const {
 	App->gui->AddText(align, text, { displacement.x+ 30 , displacement.y + 5 }, MORPHEUS, { 255, 255,0,255 });
 }
 
-ButtonEvent GuiCheck::CheckPressedCheck() const {
 
-	ButtonEvent ret = MOUSE_NONE;
-	iPoint pos;
-	App->input->GetMousePosition(pos.x, pos.y);
+void GuiCheck::StateChanging(ButtonState status) {
 
-	if (pos.x > position.x + displacement.x && pos.x < position.x + displacement.x + rect.w) {
-		if (pos.y > position.y + displacement.y && pos.y < position.y + displacement.y + rect.h) {
-			if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_DOWN) {
-				ret =CLICK_DOWN;
-			}
-			if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_UP) {
-				ret = CLICK_UP;
-			}
-		}
-	}
-	return ret;
-}
-
-void GuiCheck::ManageEvents() {
-	if (event != previous_event) {
-		switch (event) {
-		case CLICK_DOWN:
-			pressed = !pressed;
-			previous_event = event;
-			break;
-		case CLICK_UP:			
-			previous_event = event;
-			break;
-		}
+	switch (status) {
+	case IDLE:
+		
+		state = status;
+		break;
+	
+	case PRESSED_L:
+		pressed = !pressed;
+		state = status;
+		break;
 	}
 }

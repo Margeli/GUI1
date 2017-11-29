@@ -21,6 +21,7 @@ bool GuiButton::Start() {
 
 	up = LoadTexture("gui/wow ui/BUTTONS/UI-DialogBox-Button-Up.png");
 	down = LoadTexture("gui/wow ui/BUTTONS/UI-DialogBox-Button-Down.png");
+	press = LoadTexture("gui/wow ui/BUTTONS/UI-DialogBox-Button-Disabled.png");
 	rect = { 0,0,128,32 };
 	AddButtonText();
 	tex = up;
@@ -37,18 +38,7 @@ bool GuiButton::CleanUp() {
 }
 bool GuiButton::Update(float dt) {
 
-	if (CheckMouseAboveButton()) {
-		event = MOUSE_ENTER;
-	}
-	else
-	{
-		event = MOUSE_LEAVE;
-	}
-	ManageEvents();
-
-
-
-
+	
 	UpdateAlignment();
 	App->render->Blit(tex, position.x + displacement.x, position.y + displacement.y, &rect);
 
@@ -78,30 +68,20 @@ void GuiButton::AddButtonText() {
 	
 }
 
-bool GuiButton::CheckMouseAboveButton() const {
+void GuiButton::StateChanging(ButtonState status) {
 
-	bool ret = false;
-	iPoint pos;
-	App->input->GetMousePosition(pos.x, pos.y);
-
-	if (pos.x > position.x + displacement.x && pos.x < position.x + displacement.x + rect.w) {
-		if (pos.y > position.y + displacement.y && pos.y < position.y + displacement.y + rect.h)
-			ret=  true;
-	}
-
-	return ret;
-}
-void GuiButton::ManageEvents() {
-	if (event != previous_event) {
-		switch (event) {
-		case MOUSE_ENTER:
-			tex = down;
-			previous_event = event;
-			break;
-		case MOUSE_LEAVE:
-			tex = up;
-			previous_event = event;
-			break;
-		}
+	switch(status){
+	case IDLE:
+		tex = up;
+		state = status;
+		break;
+	case HOVER:
+		tex = down;
+		state = status;
+		break;
+	case PRESSED_L:
+		tex = press;
+		state = status;
+		break;
 	}
 }

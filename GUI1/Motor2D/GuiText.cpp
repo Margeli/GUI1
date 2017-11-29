@@ -38,7 +38,10 @@ GuiText::~GuiText()
 bool GuiText::Start() {
 
 	
-	
+	int width, height;
+	App->font->CalcSize(text.GetString(), width, height);
+	rect.w = width;
+	rect.h = height;
 
 	return true;
 }
@@ -61,19 +64,22 @@ void GuiText::CreateText(p2SString txt, SDL_Color color, FontType font) {
 	case ARIALN:
 		fnt = font_arialn;	break;
 	}
+	text_color = color;
+	text_font = fnt;
 	text = txt;
-	tex = App->font->Print(txt.GetString(), color, fnt);
+	tex = App->font->Print(text.GetString(), text_color, text_font);
 }
 
 bool GuiText::Update(float dt) {
 
-	UpdateTextAlignment(text.GetString());
+	UpdateAlignment();
 	App->render->Blit(tex, position.x+ displacement.x, position.y+ displacement.y);
 	return true;
 }
-void GuiText::DebugDraw() {
+void GuiText::DebugDraw() {	
+	App->render->DrawQuad({ position.x + displacement.x, position.y + displacement.y, rect.w, rect.h }, 255, 255, 0, 100);
+}
+void GuiText::ChangeText(p2SString newtext) {
 
-	int width, height;
-	App->font->CalcSize(text.GetString(), width, height);
-	App->render->DrawQuad({ position.x + displacement.x, position.y + displacement.y, width, height }, 255, 255, 0, 100);
+	tex = App->font->Print(newtext.GetString(), text_color, text_font);
 }

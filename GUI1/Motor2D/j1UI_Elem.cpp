@@ -57,28 +57,6 @@ void j1UI_Elem::UpdateAlignment() {
 
 }
 
-void j1UI_Elem::UpdateTextAlignment(p2SString text) {
-
-	int width, heigh;
-
-	App->font->CalcSize(text.GetString(), width, heigh);
-	switch (align) {
-	case NONE:
-		break;
-	case CENTERED:
-		position.x = (-App->render->camera.x + App->render->camera.w / 2) - (width/2 );
-		position.y = -App->render->camera.y;
-		break;
-	case RIGHT:
-		position.x = (-App->render->camera.x + App->render->camera.w) - width;
-		position.y = -App->render->camera.y;
-		break;
-	case LEFT:
-		position.x = -App->render->camera.x;
-		position.y = -App->render->camera.y;
-		break;
-	}
-}
 bool j1UI_Elem::Update(float dt) {
 
 	

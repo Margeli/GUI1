@@ -10,6 +10,8 @@
 #include "PugiXml\src\pugixml.hpp"
 
 class j1App;
+class j1UI_Elem;
+enum ButtonEvent;
 
 class j1Module
 {
@@ -71,7 +73,7 @@ public:
 	{
 		return true;
 	}
-	virtual void ReceiveGuiElements() const {}
+	virtual void OnEventChange(j1UI_Elem* elem, ButtonEvent event ) const {}
 
 public:
 

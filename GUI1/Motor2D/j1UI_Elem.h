@@ -24,17 +24,19 @@ enum UIType {
 	TEXT
 };
 enum ButtonState {
-	PRESSED = 1,
-	IDLE,
+	IDLE = 0,
+	HOVER,
+	PRESSED_R,
+	PRESSED_L,
 	DISABLED
 };
 enum ButtonEvent {
 
-	MOUSE_NONE = 0,
-	MOUSE_ENTER,
-	MOUSE_LEAVE,
-	CLICK_UP,
-	CLICK_DOWN
+	
+	MOUSE_INSIDE = 1,
+	MOUSE_OUTSIDE,
+	LEFT_CLICK,
+	RIGHT_CLICK
 
 };
 
@@ -71,15 +73,17 @@ public:
 
 	//sets the pos depending on the alignment
 	void UpdateAlignment();
-	void UpdateTextAlignment( p2SString text );
+	
 	virtual void DebugDraw(); 
+
+	virtual void StateChanging(ButtonState state) {};
 
 	SDL_Texture* LoadTexture(p2SString path);
 
 	SDL_Texture* tex;
 	UIType type;
-	ButtonEvent event = ButtonEvent::MOUSE_NONE;
-	ButtonEvent previous_event = ButtonEvent::MOUSE_NONE;
+	ButtonEvent event = ButtonEvent::MOUSE_OUTSIDE;
+	ButtonEvent previous_event = ButtonEvent::MOUSE_OUTSIDE;
 	ButtonState state = ButtonState::IDLE;
 	Alignment align;
 	SDL_Rect rect;

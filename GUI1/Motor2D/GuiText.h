@@ -21,10 +21,13 @@ public:
 
 	void CreateText(p2SString txt, SDL_Color color, FontType font);
 	void DebugDraw();
+	void ChangeText(p2SString newtext);
 
 private:
+	
 	p2SString text;
-
+	SDL_Color text_color;
+	_TTF_Font* text_font;
 
 	_TTF_Font* font_frizqt = nullptr;
 	_TTF_Font* font_morpheus = nullptr;
