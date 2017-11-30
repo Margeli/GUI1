@@ -27,6 +27,7 @@ public:
 	uint num_buttons;
 
 	void StateChanging(ButtonState state);
+	void SetButtonName(uint button_num, p2SString txt); // changes the name of the button in the position (button_num) starting from above
 
 private:
 
@@ -36,6 +37,9 @@ private:
 	void Drag();
 	void StartDrag();
 	void EndDrag();
+	void PutWindowButtons();
+	void DragWindowElements(iPoint displace);
+
 
 };
 

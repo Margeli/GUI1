@@ -83,7 +83,14 @@ bool j1Scene::Start()
 	
 	txt = "Remember Account Name";
 	check = App->gui->AddCheck(LEFT, txt, { 75, 940 },this);
-	window = App->gui->AddWindow(CENTERED, 2, txt, { 100,100 }, this);
+	window = App->gui->AddWindow(CENTERED, 3, txt, { 100,100 }, this);
+	/*txt = "ha";
+	window->SetButtonName(1, txt);
+	txt = "haha";
+	window->SetButtonName(2, txt);
+	txt = "hahaha";
+	window->SetButtonName(3, txt);*/
+
 	return true;
 }
 

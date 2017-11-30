@@ -23,6 +23,7 @@ public:
 
 	
 	void StateChanging(ButtonState state);
+	void ChangeButtonTxt(p2SString txt);
 
 private:
 

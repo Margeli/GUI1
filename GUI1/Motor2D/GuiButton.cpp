@@ -85,3 +85,8 @@ void GuiButton::StateChanging(ButtonState status) {
 		break;
 	}
 }
+
+void GuiButton::ChangeButtonTxt(p2SString txt) {
+
+	buttontext->ChangeText(txt);
+}
