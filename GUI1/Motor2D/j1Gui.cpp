@@ -116,11 +116,20 @@ void j1Gui::UpdateElemEvent() const {
 			if (App->input->GetMouseButtonDown(SDL_BUTTON_RIGHT) == KEY_REPEAT) {
 				elem->data->event = ButtonEvent::RIGHT_CLICK;
 				
-			}			
+			}	
+			else if (App->input->GetMouseButtonDown(SDL_BUTTON_RIGHT) == KEY_UP) {
+				elem->data->event = ButtonEvent::RIGHT_CLICK_UP;
+				break;
+			}
 			else if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_REPEAT) {
 				elem->data->event = ButtonEvent::LEFT_CLICK;
 				
-			}			
+			}	
+			else if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_UP) {
+				elem->data->event = ButtonEvent::LEFT_CLICK_UP;
+				break;
+
+			}
 			else {
 				elem->data->event = ButtonEvent::MOUSE_INSIDE;
 			}
@@ -137,26 +146,10 @@ void j1Gui::ManageElemEvent() {
 	p2List_item<j1UI_Elem*>* elem;
 	for (elem = elements.start; elem != NULL; elem = elem->next)
 	{
-		if ((elem->data->event != elem->data->previous_event) 
-			&& elem->data->listener!=nullptr) {
-			switch (elem->data->event) {
-			case MOUSE_INSIDE:
-				elem->data->listener->OnEventChange(elem->data, MOUSE_INSIDE);
-				elem->data->previous_event = elem->data->event;
-				break;
-			case MOUSE_OUTSIDE:
-				elem->data->listener->OnEventChange(elem->data, MOUSE_OUTSIDE);
-				elem->data->previous_event = elem->data->event;
-				break;
-			case LEFT_CLICK:
-				elem->data->listener->OnEventChange(elem->data, LEFT_CLICK);
-				elem->data->previous_event = elem->data->event;
-				break;
-			case RIGHT_CLICK:
-				elem->data->listener->OnEventChange(elem->data, RIGHT_CLICK);
-				elem->data->previous_event = elem->data->event;
-				break;
-			}
+		if ((elem->data->event != elem->data->previous_event)
+			&& elem->data->listener != nullptr) {
+			elem->data->listener->OnEventChange(elem->data, elem->data->event);
+			elem->data->previous_event = elem->data->event;
 		}
 	}
 }

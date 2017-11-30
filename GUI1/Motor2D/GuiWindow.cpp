@@ -20,6 +20,8 @@ bool GuiWindow::Start() {
 	tex = App->gui->GetAtlas();
 	rect = { 30, 542, 422, 454 };
 
+
+
 	return true;
 }
 
@@ -31,7 +33,7 @@ bool GuiWindow::CleanUp() {
 }
 bool GuiWindow::Update(float dt) {
 	if (moving) {	
-		Move();
+		Drag();
 	}
 
 	UpdateAlignment();
@@ -49,15 +51,17 @@ void GuiWindow::StateChanging(ButtonState status) {
 		state = status;
 		break;
 	case PRESSED_L:
-
-		StartMove();
-		
+		StartDrag();		
+		state = status;
+		break;
+	case UP_L:
+		EndDrag();
 		state = status;
 		break;
 	}
 }
 
-void GuiWindow::Move() {
+void GuiWindow::Drag() {
 	iPoint mouse_position;
 	App->input->GetMousePosition(mouse_position.x, mouse_position.y);
 
@@ -68,11 +72,17 @@ void GuiWindow::Move() {
 
 }
 
-void GuiWindow::StartMove() {
+void GuiWindow::StartDrag() {
 
 	iPoint mouse_position;
 	App->input->GetMousePosition(mouse_position.x, mouse_position.y);
 	click_pos = mouse_position;
 
 	moving = true;
+}
+void GuiWindow::EndDrag() {
+	
+	click_pos = {0,0};
+
+	moving = false;
 }

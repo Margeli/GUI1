@@ -33,8 +33,9 @@ private:
 	p2List<GuiButton*> win_buttons;
 	GuiLabel* win_text;
 
-	void Move();
-	void StartMove();
+	void Drag();
+	void StartDrag();
+	void EndDrag();
 
 };
 
