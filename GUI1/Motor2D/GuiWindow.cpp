@@ -95,8 +95,16 @@ void GuiWindow::PutWindowButtons() {
 	}
 	iPoint localPos = { position.x + displacement.x, position.y + displacement.y };
 	for (int i = 0; i < num_buttons; i++) {
+		p2SString butt_text;
+		if (win_buttons_txt.count() <= i) {
+			butt_text = nullptr;
+		}
+		else {
+			butt_text = win_buttons_txt.At(i)->data;
+		}
 		GuiButton* butt;
-		butt = App->gui->AddButton(align, win_buttons_txt.At(i)->data, { localPos.x , localPos.y + 40*(i+1)}, listener);
+		
+		butt = App->gui->AddButton(align,butt_text , { localPos.x , localPos.y + 40*(i+1)}, listener);
 
 		win_buttons.add(butt);
 	}

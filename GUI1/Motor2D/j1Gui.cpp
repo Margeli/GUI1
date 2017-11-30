@@ -47,8 +47,7 @@ bool j1Gui::Start()
 
 bool j1Gui::PreUpdate() {
 
-	if (App->input->GetKey(SDL_SCANCODE_F8) == KEY_DOWN) {	debug = !debug;}
-
+	if (App->input->GetKey(SDL_SCANCODE_F8) == KEY_DOWN) {	debug = !debug;}	
 
 	UpdateElemEvent();
 	ManageElemEvent();
