@@ -96,7 +96,7 @@ void GuiWindow::PutWindowButtons() {
 	iPoint localPos = { position.x + displacement.x, position.y + displacement.y };
 	for (int i = 0; i < num_buttons; i++) {
 		GuiButton* butt;
-		butt = App->gui->AddButton(align, nullptr, { localPos.x , localPos.y + 40*(i+1)}, listener);
+		butt = App->gui->AddButton(align, win_buttons_txt.At(i)->data, { localPos.x , localPos.y + 40*(i+1)}, listener);
 
 		win_buttons.add(butt);
 	}
@@ -104,14 +104,15 @@ void GuiWindow::PutWindowButtons() {
 void GuiWindow::DragWindowElements(iPoint displace) {
 	
 	for (p2List_item<GuiButton*>* button = win_buttons.start; button; button = button->next) {
-		button->data->displacement.x += displace.x;
-		button->data->displacement.y += displace.y;
+		button->data->Drag(displace);	
 	}
 }
 
-void GuiWindow::SetButtonName(uint button_num, p2SString txt) {
+void GuiWindow::PushButtonName( p2SString txt) {
 
-	int num = button_num - 1;
-
-	win_buttons.At(num)->data->ChangeButtonTxt(txt);
+	if (win_buttons_txt.count() >= MAX_BUTTON_NUM) {
+		LOG("Exceded max num buttons");
+		return;
+	}
+	win_buttons_txt.add(txt);
 }

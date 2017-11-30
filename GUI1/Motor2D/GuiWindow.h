@@ -3,6 +3,7 @@
 
 #include "j1UI_Elem.h"
 #include "p2List.h"
+#include "p2SString.h"
 
 
 #define MAX_BUTTON_NUM 10
@@ -27,11 +28,12 @@ public:
 	uint num_buttons;
 
 	void StateChanging(ButtonState state);
-	void SetButtonName(uint button_num, p2SString txt); // changes the name of the button in the position (button_num) starting from above
+	void PushButtonName( p2SString txt); //Sets the name of the buttons in order
 
 private:
 
 	p2List<GuiButton*> win_buttons;
+	p2List<p2SString> win_buttons_txt;
 	GuiLabel* win_text;
 
 	void Drag();

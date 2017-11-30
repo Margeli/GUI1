@@ -81,3 +81,9 @@ void GuiLabel::ChangeText(p2SString newtext) {
 
 	tex = App->font->Print(newtext.GetString(), text_color, text_font);
 }
+
+void GuiLabel::Drag(iPoint displace) {
+
+	displacement.x += displace.x;
+	displacement.y += displace.y;
+}

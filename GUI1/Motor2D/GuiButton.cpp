@@ -90,3 +90,15 @@ void GuiButton::ChangeButtonTxt(p2SString txt) {
 
 	buttontext->ChangeText(txt);
 }
+
+void GuiButton::Drag(iPoint displace) {
+
+	displacement.x += displace.x;
+	displacement.y += displace.y;
+	DragButtonElements(displace);
+}
+
+void GuiButton::DragButtonElements(iPoint displace){
+	
+	buttontext->Drag(displace);
+	}

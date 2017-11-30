@@ -23,6 +23,8 @@ public:
 
 	void ChangeText(p2SString newtext);
 
+	void Drag(iPoint displace);
+
 private:
 	
 	p2SString text;

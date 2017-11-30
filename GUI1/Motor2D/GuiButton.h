@@ -25,16 +25,21 @@ public:
 	void StateChanging(ButtonState state);
 	void ChangeButtonTxt(p2SString txt);
 
+	void Drag(iPoint displace);
+
+
 private:
-
-	
-	void AddButtonText();
-
-	GuiLabel* buttontext;
-	
 	SDL_Texture* up;
 	SDL_Texture* down;
 	SDL_Texture* press;
+
+	void AddButtonText();
+	void DragButtonElements(iPoint displace);
+	GuiLabel* buttontext;
+
+
+	
+	
 };
 
 #endif // __GUIBUTTON_H__
