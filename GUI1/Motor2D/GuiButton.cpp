@@ -52,16 +52,16 @@ void GuiButton::AddButtonText() {
 
 	switch (align) {
 	case NONE:
-		App->gui->AddText(NONE, text, { displacement.x , displacement.y + 2 }, MORPHEUS, { 255, 255,0,255 });
+		buttontext = App->gui->AddText(NONE, text, { displacement.x , displacement.y + 2 }, MORPHEUS, { 255, 255,0,255 });
 		break;
 	case CENTERED:
-		App->gui->AddText(align, text, { displacement.x , displacement.y + 2 }, MORPHEUS, { 255, 255,0,255 });
+		buttontext = App->gui->AddText(align, text, { displacement.x , displacement.y + 2 }, MORPHEUS, { 255, 255,0,255 });
 		break;
 	case RIGHT:
-		App->gui->AddText(align, text, { displacement.x + width/ 2 - rect.w /2 , displacement.y + 2 }, MORPHEUS, { 255, 255,0,255 });
+		buttontext = App->gui->AddText(align, text, { displacement.x + width/ 2 - rect.w /2 , displacement.y + 2 }, MORPHEUS, { 255, 255,0,255 });
 		break;
 	case LEFT:
-		App->gui->AddText(align, text, { displacement.x + (rect.w -width)/2 , displacement.y + 2 }, MORPHEUS, { 255, 255,0,255 });
+		buttontext = App->gui->AddText(align, text, { displacement.x + (rect.w -width)/2 , displacement.y + 2 }, MORPHEUS, { 255, 255,0,255 });
 		break;
 	}
 			

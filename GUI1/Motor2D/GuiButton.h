@@ -3,6 +3,8 @@
 
 #include "j1UI_Elem.h"
 
+class GuiLabel;
+
 
 // ---------------------------------------------------
 class GuiButton : public j1UI_Elem
@@ -26,6 +28,8 @@ private:
 
 	
 	void AddButtonText();
+
+	GuiLabel* buttontext;
 	
 	SDL_Texture* up;
 	SDL_Texture* down;

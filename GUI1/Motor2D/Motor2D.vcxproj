@@ -80,7 +80,8 @@
     <ClCompile Include="GuiCheck.cpp" />
     <ClCompile Include="GuiImage.cpp" />
     <ClCompile Include="GuiInput.cpp" />
-    <ClCompile Include="GuiText.cpp" />
+    <ClCompile Include="GuiLabel.cpp" />
+    <ClCompile Include="GuiWindow.cpp" />
     <ClCompile Include="j1UI_Elem.cpp" />
     <ClCompile Include="j1Fonts.cpp" />
     <ClCompile Include="j1Gui.cpp" />
@@ -104,7 +105,8 @@
     <ClInclude Include="GuiCheck.h" />
     <ClInclude Include="GuiImage.h" />
     <ClInclude Include="GuiInput.h" />
-    <ClInclude Include="GuiText.h" />
+    <ClInclude Include="GuiLabel.h" />
+    <ClInclude Include="GuiWindow.h" />
     <ClInclude Include="j1UI_Elem.h" />
     <ClInclude Include="j1Fonts.h" />
     <ClInclude Include="j1Gui.h" />

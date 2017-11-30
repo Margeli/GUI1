@@ -55,9 +55,6 @@
     <ClCompile Include="GuiImage.cpp">
       <Filter>GUI</Filter>
     </ClCompile>
-    <ClCompile Include="GuiText.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
     <ClCompile Include="GuiButton.cpp">
       <Filter>GUI</Filter>
     </ClCompile>
@@ -65,6 +62,12 @@
       <Filter>GUI</Filter>
     </ClCompile>
     <ClCompile Include="GuiInput.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GuiLabel.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GuiWindow.cpp">
       <Filter>GUI</Filter>
     </ClCompile>
   </ItemGroup>
@@ -141,9 +144,6 @@
     <ClInclude Include="GuiImage.h">
       <Filter>GUI</Filter>
     </ClInclude>
-    <ClInclude Include="GuiText.h">
-      <Filter>GUI</Filter>
-    </ClInclude>
     <ClInclude Include="GuiButton.h">
       <Filter>GUI</Filter>
     </ClInclude>
@@ -151,6 +151,12 @@
       <Filter>GUI</Filter>
     </ClInclude>
     <ClInclude Include="GuiInput.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GuiLabel.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GuiWindow.h">
       <Filter>GUI</Filter>
     </ClInclude>
   </ItemGroup>

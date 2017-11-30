@@ -21,13 +21,16 @@ enum UIType {
 	IMAGE,
 	BUTTON,
 	INPUTBOX,
-	TEXT
+	LABEL, 
+	WINDOW
 };
 enum ButtonState {
 	IDLE = 0,
 	HOVER,
 	PRESSED_R,
+	UP_R,
 	PRESSED_L,
+	UP_L,
 	DISABLED
 };
 enum ButtonEvent {
@@ -36,7 +39,9 @@ enum ButtonEvent {
 	MOUSE_INSIDE = 1,
 	MOUSE_OUTSIDE,
 	LEFT_CLICK,
-	RIGHT_CLICK
+	LEFT_CLICK_UP,
+	RIGHT_CLICK,
+	RIGHT_CLICK_UP
 
 };
 
@@ -73,8 +78,8 @@ public:
 
 	//sets the pos depending on the alignment
 	void UpdateAlignment();
-	
-	virtual void DebugDraw(); 
+
+	virtual void DebugDraw();
 
 	virtual void StateChanging(ButtonState state) {};
 
@@ -92,9 +97,14 @@ public:
 	j1Module* listener;
 
 
+
 private:
 	bool Blit() const { return true; }
 	bool debug = false;
+
+protected:
+	bool moving = false;
+	iPoint click_pos = { 0,0 };
 };
 
 #endif // __j1UIELEM_H__

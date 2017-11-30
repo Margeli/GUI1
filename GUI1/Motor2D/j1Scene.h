@@ -5,9 +5,10 @@
 
 struct SDL_Texture;
 class GuiImage;
-class GuiText;
+class GuiLabel;
 class GuiButton;
 class GuiCheck;
+class GuiWindow;
 
 
 class j1Scene : public j1Module
@@ -55,10 +56,12 @@ private:
 	GuiButton* commsite;
 	GuiCheck* check;
 	
-	GuiText* release;
-	GuiText* copyright;
-	GuiText* date;
-	GuiText* web;
+	GuiLabel* release;
+	GuiLabel* copyright;
+	GuiLabel* date;
+	GuiLabel* web;
+
+	GuiWindow* window;
 
 	
 };

@@ -12,7 +12,8 @@
 #include "j1Scene.h"
 #include "j1Fonts.h"
 #include"GuiImage.h"
-#include "GuiText.h"
+#include "GuiLabel.h"
+#include "GuiWindow.h"
 
 j1Scene::j1Scene() : j1Module()
 {
@@ -82,6 +83,7 @@ bool j1Scene::Start()
 	
 	txt = "Remember Account Name";
 	check = App->gui->AddCheck(LEFT, txt, { 75, 940 },this);
+	window = App->gui->AddWindow(CENTERED, 2, txt, { 100,100 }, this);
 	return true;
 }
 
@@ -221,5 +223,11 @@ void j1Scene::OnEventChange(j1UI_Elem* elem, ButtonEvent event) const {
 	}
 	if (event == ButtonEvent::LEFT_CLICK) {
 		elem->StateChanging(PRESSED_L);		
+	}
+	if (event == ButtonEvent::LEFT_CLICK_UP) {
+		elem->StateChanging(UP_L);
+	}
+	if (event == ButtonEvent::RIGHT_CLICK_UP) {
+		elem->StateChanging(UP_R);		
 	}
 }

@@ -137,7 +137,8 @@ void j1Gui::ManageElemEvent() {
 	p2List_item<j1UI_Elem*>* elem;
 	for (elem = elements.start; elem != NULL; elem = elem->next)
 	{
-		if ((elem->data->event != elem->data->previous_event) && elem->data->listener) {
+		if ((elem->data->event != elem->data->previous_event) 
+			&& elem->data->listener!=nullptr) {
 			switch (elem->data->event) {
 			case MOUSE_INSIDE:
 				elem->data->listener->OnEventChange(elem->data, MOUSE_INSIDE);
@@ -191,10 +192,14 @@ j1UI_Elem* j1Gui::AddElement(UIType type, Alignment alignment) {
 		ret = new GuiInput(alignment);
 		elements.add(ret);
 		break;
-	case TEXT:
-		ret = new GuiText(alignment);
+	case LABEL:
+		ret = new GuiLabel(alignment);
 		elements.add(ret);
 		break;	
+	case WINDOW:
+		ret = new GuiWindow(alignment);
+		elements.add(ret);
+		break;
 	}
 	return ret;
 }
@@ -229,11 +234,21 @@ GuiCheck* j1Gui::AddCheck(Alignment align, p2SString text, iPoint displacement, 
 
 }
 
-GuiText* j1Gui::AddText(Alignment align, p2SString text, iPoint displacement,FontType font, SDL_Color color, j1Module* listener) {
-	GuiText* tex = (GuiText*)App->gui->AddElement(TEXT, align);
+GuiLabel* j1Gui::AddText(Alignment align, p2SString text, iPoint displacement,FontType font, SDL_Color color, j1Module* listener) {
+	GuiLabel* tex = (GuiLabel*)App->gui->AddElement(LABEL, align);
 	tex->CreateText(text, color, font);
 	tex->displacement = displacement;
 	tex->listener = listener;
 	return tex;
+
+}
+
+GuiWindow* j1Gui::AddWindow(Alignment align, uint num_buttons, p2SString title, iPoint displacement, j1Module* listener) {
+	GuiWindow* window = (GuiWindow*)App->gui->AddElement(WINDOW, align);
+	window->displacement = displacement;
+	window->num_buttons = num_buttons;
+	window->title = title;
+	window->listener = listener;
+	return window;
 
 }

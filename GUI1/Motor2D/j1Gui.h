@@ -5,7 +5,8 @@
 #include "p2List.h"
 #include "j1UI_Elem.h"
 #include "GuiImage.h"
-#include "GuiText.h"
+#include "GuiLabel.h"
+#include "GuiWindow.h"
 #include "GuiInput.h"
 #include "GuiCheck.h"
 #include "GuiButton.h"
@@ -55,7 +56,8 @@ public:
 	GuiImage* AddImage(Alignment align, char* path , SDL_Rect texture = { 0,0,0,0 }, iPoint displacement = { 0,0 },j1Module* listener = nullptr);
 	GuiButton* AddButton(Alignment align, p2SString text, iPoint displacement = { 0,0 }, j1Module* listener = nullptr);
 	GuiCheck* AddCheck(Alignment align, p2SString text, iPoint displacement = { 0,0 }, j1Module* listener = nullptr);
-	GuiText* AddText(Alignment align, p2SString text, iPoint displacement = { 0,0 }, FontType= DEFAULT, SDL_Color color = { 255,255,255,255 }, j1Module* listener = nullptr);
+	GuiLabel* AddText(Alignment align, p2SString text, iPoint displacement = { 0,0 }, FontType= DEFAULT, SDL_Color color = { 255,255,255,255 }, j1Module* listener = nullptr);
+	GuiWindow* AddWindow(Alignment align, uint num_buttons, p2SString title, iPoint displacement = { 0,0 }, j1Module* listener = nullptr);
 
 	void DestroyElement(j1UI_Elem* elem);
 
