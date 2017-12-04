@@ -26,6 +26,7 @@ public:
 	void ChangeButtonTxt(p2SString txt);
 
 	void Drag(iPoint displace);
+	void Drag();
 
 
 private:
@@ -34,6 +35,8 @@ private:
 	SDL_Texture* press;
 
 	void AddButtonText();
+	void StartDrag();
+	void EndDrag();
 	void DragButtonElements(iPoint displace);
 	GuiLabel* buttontext;
 

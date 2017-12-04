@@ -52,6 +52,7 @@ void GuiWindow::StateChanging(ButtonState status) {
 		state = status;
 		break;
 	case PRESSED_L:
+		if(CheckIsUpperRect())
 		StartDrag();		
 		state = status;
 		break;
@@ -123,4 +124,16 @@ void GuiWindow::PushButtonName( p2SString txt) {
 		return;
 	}
 	win_buttons_txt.add(txt);
+}
+bool GuiWindow::CheckIsUpperRect() {
+	iPoint mouse_pos;
+	App->input->GetMousePosition(mouse_pos.x, mouse_pos.y);
+	iPoint pos = { position.x + displacement.x,position.y + displacement.y };
+	if ((mouse_pos.x > pos.x && mouse_pos.x < pos.x + rect.w) && (mouse_pos.y > pos.y && mouse_pos.y < pos.y + 20)) {
+		return true;
+	}
+	else {
+
+		return false;
+	}
 }

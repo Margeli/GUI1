@@ -37,6 +37,9 @@ bool GuiButton::CleanUp() {
 
 }
 bool GuiButton::Update(float dt) {
+	if (moving) {
+		Drag();
+	}
 
 	
 	UpdateAlignment();
@@ -80,7 +83,12 @@ void GuiButton::StateChanging(ButtonState status) {
 		state = status;
 		break;
 	case PRESSED_L:
+		StartDrag();
 		tex = press;
+		state = status;
+		break;
+	case UP_L:
+		EndDrag();
 		state = status;
 		break;
 	}
@@ -102,3 +110,30 @@ void GuiButton::DragButtonElements(iPoint displace){
 	
 	buttontext->Drag(displace);
 	}
+
+void GuiButton::StartDrag() {
+
+	iPoint mouse_position;
+	App->input->GetMousePosition(mouse_position.x, mouse_position.y);
+	click_pos = mouse_position;
+
+	moving = true;
+}
+
+void GuiButton::EndDrag() {
+
+	click_pos = { 0,0 };
+
+	moving = false;
+}
+
+void GuiButton::Drag() {
+	iPoint mouse_position;
+	App->input->GetMousePosition(mouse_position.x, mouse_position.y);
+
+	displacement.x += (mouse_position.x - click_pos.x);
+	displacement.y += (mouse_position.y - click_pos.y);
+	DragButtonElements({ mouse_position.x - click_pos.x , mouse_position.y - click_pos.y });
+
+	click_pos = mouse_position;
+}

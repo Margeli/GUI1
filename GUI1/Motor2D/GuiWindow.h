@@ -36,6 +36,7 @@ private:
 	p2List<p2SString> win_buttons_txt;
 	GuiLabel* win_text;
 
+	bool CheckIsUpperRect();
 	void Drag();
 	void StartDrag();
 	void EndDrag();

@@ -108,16 +108,25 @@ void j1Gui::UpdateElemEvent() const {
 	App->input->GetMousePosition(pos.x, pos.y);
 
 	p2List_item<j1UI_Elem*>* elem;
-	for (elem = elements.start; elem != NULL; elem = elem->next)
+	for (elem = elements.end; elem != NULL; elem = elem->prev)
 	{
 		iPoint elem_pos = { elem->data->position.x + elem->data->displacement.x,elem->data->position.y + elem->data->displacement.y };
 		if ((pos.x > elem_pos.x && pos.x < elem_pos.x + elem->data->rect.w) && (pos.y > elem_pos.y && pos.y < elem_pos.y + elem->data->rect.h)) {
-			if (App->input->GetMouseButtonDown(SDL_BUTTON_RIGHT) == KEY_REPEAT) {
+			
+			if (App->input->GetMouseButtonDown(SDL_BUTTON_RIGHT) == KEY_DOWN) {
+				elem->data->event = ButtonEvent::RIGHT_CLICK_DOWN;
+				break;
+			}	
+			else if (App->input->GetMouseButtonDown(SDL_BUTTON_RIGHT) == KEY_REPEAT) {
 				elem->data->event = ButtonEvent::RIGHT_CLICK;
 				
 			}	
 			else if (App->input->GetMouseButtonDown(SDL_BUTTON_RIGHT) == KEY_UP) {
 				elem->data->event = ButtonEvent::RIGHT_CLICK_UP;
+				break;
+			}
+			else if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_DOWN) {
+				elem->data->event = ButtonEvent::LEFT_CLICK_DOWN;
 				break;
 			}
 			else if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_REPEAT) {

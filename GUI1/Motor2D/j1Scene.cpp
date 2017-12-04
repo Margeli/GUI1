@@ -231,10 +231,10 @@ void j1Scene::OnEventChange(j1UI_Elem* elem, ButtonEvent event) const {
 		elem->StateChanging(IDLE);
 		LOG("Leaving");
 	}
-	if (event == ButtonEvent::RIGHT_CLICK) {
+	if (event == ButtonEvent::RIGHT_CLICK_DOWN) {
 		elem->StateChanging(PRESSED_R);
 	}
-	if (event == ButtonEvent::LEFT_CLICK) {
+	if (event == ButtonEvent::LEFT_CLICK_DOWN) {
 		elem->StateChanging(PRESSED_L);		
 	}
 	if (event == ButtonEvent::LEFT_CLICK_UP) {
