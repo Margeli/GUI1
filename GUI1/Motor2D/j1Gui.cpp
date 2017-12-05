@@ -40,6 +40,7 @@ bool j1Gui::Start()
 	for (elem = elements.start; elem != NULL; elem = elem->next)
 	{
 		elem->data->Start();
+		
 	}
 
 	return true;
@@ -48,6 +49,9 @@ bool j1Gui::Start()
 bool j1Gui::PreUpdate() {
 
 	if (App->input->GetKey(SDL_SCANCODE_F8) == KEY_DOWN) {	debug = !debug;}	
+	if (App->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN) {
+		ShiftFocus();
+	}
 
 	UpdateElemEvent();
 	ManageElemEvent();
@@ -252,4 +256,26 @@ GuiWindow* j1Gui::AddWindow(Alignment align, uint num_buttons, p2SString title, 
 	window->listener = listener;
 	return window;
 
+}
+
+void j1Gui::ShiftFocus() {
+
+		if (elem->data->focus) {
+
+			for (p2List_item<j1UI_Elem*>* elem2 = elem->prev; elem2; elem2 = elem2->prev) {
+
+				if (elem2->data->can_focus) {
+					elem->data->lose_focus = true;
+					elem2->data->focus = true;
+					return;
+				}
+			}
+		}
+	}
+	for (p2List_item<j1UI_Elem*>* elem = elements.end; elem; elem = elem->prev) {
+		if (elem->data->can_focus) {
+			elem->data->focus = true;
+			return;
+		}
+	}
 }

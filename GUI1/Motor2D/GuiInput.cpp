@@ -7,6 +7,7 @@
 
 GuiInput::GuiInput(Alignment alignment) : j1UI_Elem(UIType::INPUTBOX, Alignment::NONE) {
 	align = alignment;
+	can_focus = true;
 }
 
 

@@ -27,7 +27,7 @@ public:
 
 	void Drag(iPoint displace);
 	void Drag();
-
+	
 
 private:
 	SDL_Texture* up;

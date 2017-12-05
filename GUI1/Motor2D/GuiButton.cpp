@@ -9,6 +9,7 @@
 
 GuiButton::GuiButton(Alignment alignment) : j1UI_Elem(UIType::BUTTON, Alignment::NONE) {
 	align = alignment;
+	can_focus = true;
 	
 }
 
@@ -40,6 +41,16 @@ bool GuiButton::Update(float dt) {
 	if (moving) {
 		Drag();
 	}
+	//----SHIFTFOCUS--
+	if (focus) {
+		tex = down;
+	}
+	if (lose_focus) {
+		focus = false;
+		tex = up;
+		lose_focus = false;
+	}
+	//------
 
 	
 	UpdateAlignment();

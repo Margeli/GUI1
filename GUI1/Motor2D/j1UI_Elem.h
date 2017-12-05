@@ -97,6 +97,9 @@ public:
 	iPoint position;
 	iPoint displacement;
 	j1Module* listener;
+	bool can_focus = false;
+	bool focus = false;
+	bool lose_focus = false;
 
 
 

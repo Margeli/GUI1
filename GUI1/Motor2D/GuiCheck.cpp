@@ -9,6 +9,7 @@
 
 GuiCheck::GuiCheck(Alignment alignment) : j1UI_Elem(UIType::CHECK, Alignment::NONE) {
 	align = alignment;
+	can_focus = true;
 }
 
 
@@ -34,8 +35,16 @@ bool GuiCheck::CleanUp() {
 
 }
 bool GuiCheck::Update(float dt) {
-
-
+	//----SHIFTFOCUS--
+	if (focus) {
+		pressed = true;
+	}
+	if (lose_focus) {
+		focus = false;
+		pressed = false;
+		lose_focus = false;
+	}
+	//--------
 	UpdateAlignment();
 	App->render->Blit(tex, position.x + displacement.x, position.y + displacement.y, &rect);
 	if (pressed) {

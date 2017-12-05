@@ -21,6 +21,7 @@ public:
 	bool pressed = false;
 
 	void StateChanging(ButtonState state);
+	
 
 private:
 	void AddCheckText() const ;
