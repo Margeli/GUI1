@@ -260,6 +260,7 @@ GuiWindow* j1Gui::AddWindow(Alignment align, uint num_buttons, p2SString title, 
 
 void j1Gui::ShiftFocus() {
 
+	for (p2List_item<j1UI_Elem*>* elem = elements.end; elem; elem = elem->prev) {
 		if (elem->data->focus) {
 
 			for (p2List_item<j1UI_Elem*>* elem2 = elem->prev; elem2; elem2 = elem2->prev) {
