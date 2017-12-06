@@ -79,6 +79,7 @@ bool GuiLabel::Update(float dt) {
 
 void GuiLabel::ChangeText(p2SString newtext) {
 
+	text = newtext;
 	tex = App->font->Print(newtext.GetString(), text_color, text_font);
 }
 
@@ -86,4 +87,10 @@ void GuiLabel::Drag(iPoint displace) {
 
 	displacement.x += displace.x;
 	displacement.y += displace.y;
+}
+void GuiLabel::GetTxtDimensions(int &width, int &height) {
+
+	App->font->CalcSize(text.GetString(), width, height, text_font);
+	rect.w = width;
+	rect.h = height;
 }

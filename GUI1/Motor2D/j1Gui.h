@@ -58,6 +58,7 @@ public:
 	GuiCheck* AddCheck(Alignment align, p2SString text, iPoint displacement = { 0,0 }, j1Module* listener = nullptr);
 	GuiLabel* AddText(Alignment align, p2SString text, iPoint displacement = { 0,0 }, FontType= DEFAULT, SDL_Color color = { 255,255,255,255 }, j1Module* listener = nullptr);
 	GuiWindow* AddWindow(Alignment align, uint num_buttons, p2SString title, iPoint displacement = { 0,0 }, j1Module* listener = nullptr);
+	GuiInput* AddInput(Alignment align, iPoint displacement = { 0,0 }, j1Module* listener = nullptr);
 
 	void DestroyElement(j1UI_Elem* elem);
 

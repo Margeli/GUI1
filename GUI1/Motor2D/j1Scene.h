@@ -8,6 +8,7 @@ class GuiImage;
 class GuiLabel;
 class GuiButton;
 class GuiCheck;
+class GuiInput;
 class GuiWindow;
 
 
@@ -62,7 +63,7 @@ private:
 	GuiLabel* web;
 
 	GuiWindow* window;
-
+	GuiInput* input;
 	
 };
 

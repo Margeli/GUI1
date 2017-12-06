@@ -67,3 +67,8 @@ void j1UI_Elem::DebugDraw() {
 	
 	App->render->DrawQuad({position.x+ displacement.x, position.y+displacement.y, rect.w, rect.h }, 255, 255, 0, 100, false);
 }
+void j1UI_Elem::CenteredtoLeft(int &num){
+	num += App->render->camera.w / 2;
+	num-= rect.w / 2;
+
+}

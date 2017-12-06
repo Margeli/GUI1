@@ -257,6 +257,12 @@ GuiWindow* j1Gui::AddWindow(Alignment align, uint num_buttons, p2SString title, 
 	return window;
 
 }
+GuiInput* j1Gui::AddInput(Alignment align, iPoint displacement, j1Module* listener) {
+	GuiInput* input = (GuiInput*)App->gui->AddElement(INPUTBOX, align);
+	input->displacement = displacement;
+	input->listener = listener;
+	return input;
+}
 
 void j1Gui::ShiftFocus() {
 

@@ -97,6 +97,8 @@ bool j1Scene::Start()
 	window->PushButtonName("8");
 	window->PushButtonName("9");
 	window->PushButtonName("10");
+
+	input = App->gui->AddInput(CENTERED, { 0, 720 }, this);
 	return true;
 }
 

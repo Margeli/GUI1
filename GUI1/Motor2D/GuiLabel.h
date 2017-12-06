@@ -25,6 +25,8 @@ public:
 
 	void Drag(iPoint displace);
 
+	void GetTxtDimensions(int &width, int &height);
+
 private:
 	
 	p2SString text;

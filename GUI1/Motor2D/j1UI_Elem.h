@@ -101,7 +101,7 @@ public:
 	bool focus = false;
 	bool lose_focus = false;
 
-
+	void CenteredtoLeft(int &num);
 
 private:
 	bool Blit() const { return true; }
