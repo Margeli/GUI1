@@ -21,11 +21,15 @@ public:
 
 	void CreateText(p2SString txt, SDL_Color color, FontType font);
 
+	const char* GetText() const;
+
 	void ChangeText(p2SString newtext);
 
 	void Drag(iPoint displace);
 
 	void GetTxtDimensions(int &width, int &height);
+
+	void AddCharToTxt(char* ch);
 
 private:
 	

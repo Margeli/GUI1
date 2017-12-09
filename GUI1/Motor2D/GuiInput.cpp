@@ -3,6 +3,8 @@
 #include "j1UI_Elem.h"
 #include "j1App.h"
 #include "j1Render.h"
+#include "SDL/include/SDL.h"
+#include "p2Log.h"
 
 
 GuiInput::GuiInput(Alignment alignment) : j1UI_Elem(UIType::INPUTBOX, Alignment::NONE) {
@@ -15,6 +17,17 @@ GuiInput::~GuiInput()
 {
 }
 
+bool GuiInput::Awake(pugi::xml_node& conf) {
+
+	SDL_Init(0);
+
+	if (SDL_InitSubSystem(SDL_INIT_EVENTS) < 0)
+	{
+		LOG("SDL_EVENTS could not initialize! SDL_Error: %s\n", SDL_GetError());
+		
+	}
+	return true;
+}
 bool GuiInput::Start() {
 	idle = LoadTexture("gui/wow ui/CHATFRAME/UI-ChatInputBorder.png");
 	hover = LoadTexture("gui/wow ui/CHATFRAME/UI-CHATINPUTBORDER-LEFT.png");
@@ -22,12 +35,46 @@ bool GuiInput::Start() {
 	tex = idle;
 	AddDefaultText();
 	
+	
 	return true;
 }
 
 bool GuiInput::CleanUp() {
 
 	//App->tex->UnLoad(tex);
+	SDL_QuitSubSystem(SDL_INIT_EVENTS);
+	return true;
+
+}
+bool GuiInput::PreUpdate() {
+
+
+	static SDL_Event evnt;	
+	char* text;
+	
+	if (readinput == true) {
+		SDL_StartTextInput();
+
+
+		while (SDL_PollEvent(&evnt) != 0)
+		{
+			switch (evnt.type) {
+			case SDL_QUIT:
+
+				break;
+
+			case SDL_TEXTINPUT:
+				text = evnt.edit.text;
+				inputtext->AddCharToTxt(text);
+				
+				break;
+			}
+
+
+		}
+		SDL_StopTextInput();
+	}
+	
 	return true;
 
 }
@@ -37,10 +84,12 @@ bool GuiInput::Update(float dt) {
 	//----SHIFTFOCUS--
 	if (focus) {
 		tex = hover;
+		ReadInput();
 		int height, width;
 		int margin = 10; // should be the same as margin in AddDefaultTxt()
 		inputtext->GetTxtDimensions(width, height);		
-		App->render->DrawQuad({position.x + 10 + width , position.y + displacement.y+10,1, height }, 255, 255, 255, 255);
+		App->render->DrawQuad({position.x + margin + width , position.y + displacement.y+8,1, height }, 255, 255, 255, 255);
+		
 	}
 	if (lose_focus) {
 		focus = false;
@@ -48,10 +97,11 @@ bool GuiInput::Update(float dt) {
 		lose_focus = false;
 	}
 	//------
-
+	
 	
 	return true;
 }
+
 void GuiInput::StateChanging(ButtonState status) {
 
 	switch (status) {
@@ -64,7 +114,11 @@ void GuiInput::StateChanging(ButtonState status) {
 		state = status;
 		break;
 	case PRESSED_L:
-		inputtext->ChangeText("asdsdsadssadasdasd");
+		readinput = true;
+		if (strcmp(inputtext->GetText(), "Default text")== 0) {
+			LOG("%s", inputtext->GetText());
+			RemoveText();
+		}
 		focus = true;
 		state = status;
 		break;
@@ -80,4 +134,13 @@ void GuiInput::AddDefaultText(){
 	if (align == CENTERED) { CenteredtoLeft(pos); }
 	inputtext = App->gui->AddText(LEFT, txt, { pos+ displacement.x +margin , displacement.y +6 }, MORPHEUS, { 255, 255,255,255 });
 
+}
+
+void GuiInput::ReadInput() {
+
+	
+}
+
+void GuiInput::RemoveText() {
+	inputtext->ChangeText("");
 }

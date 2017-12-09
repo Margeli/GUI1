@@ -15,8 +15,10 @@ public:
 
 	// Destructor
 	virtual ~GuiInput();
+	bool Awake(pugi::xml_node&);
 	bool Start();
 	bool CleanUp();
+	bool PreUpdate();
 	bool Update(float dt);
 
 	p2SString text;
@@ -27,6 +29,11 @@ public:
 private:
 	SDL_Texture* hover;
 	SDL_Texture* idle;
+
+	bool readinput = false;
+	void ReadInput();
+	void RemoveText();
+
 
 	GuiLabel* inputtext;
 };

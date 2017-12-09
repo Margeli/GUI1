@@ -69,6 +69,9 @@ public:
 	// Call before first frame
 	virtual bool Start();
 
+	// Called before all Updates
+	virtual bool PreUpdate() { return true; };
+
 	// Called all Updates
 	virtual bool Update(float dt);
 

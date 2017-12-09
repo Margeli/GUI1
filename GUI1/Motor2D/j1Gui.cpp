@@ -27,6 +27,14 @@ bool j1Gui::Awake(pugi::xml_node& conf)
 
 	atlas_file_name = conf.child("atlas").attribute("file").as_string("");
 
+	p2List_item<j1UI_Elem*>* elem;
+
+	for (elem = elements.start; elem != NULL; elem = elem->next)
+	{
+		ret = elem->data->Awake(conf);
+
+	}
+
 	return ret;
 }
 
@@ -51,6 +59,13 @@ bool j1Gui::PreUpdate() {
 	if (App->input->GetKey(SDL_SCANCODE_F8) == KEY_DOWN) {	debug = !debug;}	
 	if (App->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN) {
 		ShiftFocus();
+	}
+	p2List_item<j1UI_Elem*>* elem;
+
+	for (elem = elements.start; elem != NULL; elem = elem->next)
+	{
+		elem->data->PreUpdate();
+		
 	}
 
 	UpdateElemEvent();

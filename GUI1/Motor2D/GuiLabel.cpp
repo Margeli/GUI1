@@ -4,6 +4,7 @@
 #include "j1App.h"
 #include "j1Fonts.h"
 #include "j1Render.h"
+#include "j1Textures.h"
 
 
 
@@ -78,7 +79,7 @@ bool GuiLabel::Update(float dt) {
 }
 
 void GuiLabel::ChangeText(p2SString newtext) {
-
+	App->tex->UnLoad(tex);
 	text = newtext;
 	tex = App->font->Print(newtext.GetString(), text_color, text_font);
 }
@@ -94,3 +95,11 @@ void GuiLabel::GetTxtDimensions(int &width, int &height) {
 	rect.w = width;
 	rect.h = height;
 }
+ const char* GuiLabel::GetText() const {
+	return text.GetString();
+}
+
+ void GuiLabel::AddCharToTxt(char* ch) {
+	 text += ch;
+	 ChangeText(text);
+ }
